@@ -1,0 +1,149 @@
+<div class="modal-body">
+    <button type="button" class="close" (click)="closeModal()">
+        <span aria-hidden="true"><i class="icon-close"></i></span>
+    </button>
+
+    <div class="form-box">
+        <div class="form-tab nav-fill">
+            <ul ngbNav #nav="ngbNav" class="justify-content-center nav nav-pills">
+                <li ngbNavItem>
+                    <a ngbNavLink>Sign In</a>
+                    <ng-template ngbNavContent>
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="singin-email">Username or email address *</label>
+                                <input type="text" class="form-control" id="singin-email" ngModel [ngModelOptions]="{standalone: true}" [(ngModel)]="loginUsuer.email"  name="singin-email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="singin-password">Password *</label>
+                                <input type="password" class="form-control" id="singin-password" [(ngModel)]="loginUsuer.password" name="singin-password"
+                                    required>
+                            </div>
+
+                            <div class="form-footer">
+                                <button type="submit" (click)="login()" class="btn btn-outline-primary-2">
+                                    <span>LOG IN</span>
+                                    <i class="icon-long-arrow-right"></i>
+                                </button>
+
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="signin-remember">
+                                    <label class="custom-control-label" for="signin-remember">Remember Me</label>
+                                </div>
+
+                                <a href="javascript:;" class="forgot-link">Forgot Your Password?</a>
+                            </div>
+                        </form>
+                <!--         <div class="form-choice">
+                            <p class="text-center">or sign in with</p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="javascript:;" class="btn btn-login btn-g">
+                                        <i class="icon-google"></i>
+                                        Login With Google
+                                    </a>
+                                </div>
+                                <div class="col-sm-6">
+                                    <a href="javascript:;" class="btn btn-login btn-f">
+                                        <i class="icon-facebook-f"></i>
+                                        Login With Facebook
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                    </ng-template>
+                </li>
+                <li ngbNavItem>
+                    <a ngbNavLink>Register</a>
+                    <ng-template ngbNavContent>
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="register_firstname">First Name</label>
+                                <input type="text" class="form-control" id="register_firstname" [(ngModel)]="registerUser.firstname" name="register_firstname"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_lastname">Last Name</label>
+                                <input type="text" class="form-control" id="register_lastname" [(ngModel)]="registerUser.lastname" name="register_lastname"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_age">Age</label>
+                                <input type="number" class="form-control" id="register_age" [(ngModel)]="registerUser.age" name="register_age"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_title">Title</label>
+                                <input type="text" class="form-control" id="register_title" [(ngModel)]="registerUser.titre" name="register_title"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_address">Address</label>
+                                <input type="text" class="form-control" id="register_address" [(ngModel)]="registerUser.address" name="register_address"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_city">City</label>
+                                <input type="text" class="form-control" id="register_city" [(ngModel)]="registerUser.city" name="register_city"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_country">Country</label>
+                                <input type="text" class="form-control" id="register_country" [(ngModel)]="registerUser.country" name="register_country"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_postal">Code postal</label>
+                                <input type="number" class="form-control" id="register_postal" [(ngModel)]="registerUser.codepostal" name="register_postal"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-email">Your email address *</label>
+                                <input type="email" class="form-control" id="register-email" [(ngModel)]="registerUser.email" name="register-email"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="register-password">Password *</label>
+                                <input type="password" class="form-control" [(ngModel)]="registerUser.password" id="register-password"
+                                    name="register-password" required>
+                            </div>
+                         
+                            <div class="form-footer">
+                                <button type="submit" (click)="createAccount()"  class="btn btn-outline-primary-2">
+                                    <span>SIGN UP</span>
+                                    <i class="icon-long-arrow-right"></i>
+                                </button>
+
+                              <!--   <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="register-policy" required>
+                                    <label class="custom-control-label" for="register-policy">I agree to the privacy
+                                        policy</label>
+                                </div> -->
+                            </div>
+                        </form>
+                    <!--     <div class="form-choice">
+                            <p class="text-center">or sign in with</p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="javascript:;" class="btn btn-login btn-g">
+                                        <i class="icon-google"></i>
+                                        Login With Google
+                                    </a>
+                                </div>
+                                <div class="col-sm-6">
+                                    <a href="javascript:;" class="btn btn-login  btn-f">
+                                        <i class="icon-facebook-f"></i>
+                                        Login With Facebook
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                    </ng-template>
+                </li>
+            </ul>
+            <div [ngbNavOutlet]="nav"></div>
+        </div>
+    </div>
+</div>
