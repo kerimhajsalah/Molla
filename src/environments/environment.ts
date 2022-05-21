@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   demo: 'demo1',
-  SERVER_URL: 'http://localhost:1337',
-  apiUrl: 'http://localhost:3000/',
+  SERVER_URL: 'http://localhost:3000',
+  apiUrl: 'http://localhost:3000',
 };
 
 /*

@@ -16,6 +16,14 @@ export class ApiService {
 	/**
 	 * Get Products
 	 */
+	public signUp(user) : Observable<any>{
+		console.log("user",user) 
+	 return this.http.post<any>("http://localhost:3000/users/" , user);
+	 }
+	public signIn(user): Observable<any> {
+		console.log("catched")
+	return this.http.post("http://localhost:3000/users/signIn", user);
+	}
 	public fetchShopData(params: any, perPage: number, initial = 'shop'): Observable<any> {
 		let temp = initial;
 		if (!initial.includes('?')) {

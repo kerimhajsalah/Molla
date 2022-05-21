@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigServiceService } from 'src/app/config-service.service';
+import { ApiService } from 'src/app/shared/services/api.service';
 @Component({
 	selector: 'molla-login-modal',
 	templateUrl: './login-modal.component.html',
@@ -8,7 +9,7 @@ import { ConfigServiceService } from 'src/app/config-service.service';
 
 export class LoginModalComponent implements OnInit {
 
-	constructor(private _auth: ConfigServiceService) { }
+	constructor(private _auth: ConfigServiceService, private _authUser:ApiService) { }
     registerUser = {
 		firstname:"",
 		lastname:"",
@@ -35,10 +36,12 @@ export class LoginModalComponent implements OnInit {
 	}
 	createAccount(){
 		console.log(this.registerUser)
-		this._auth.signUp(this.registerUser)
+		this._authUser.signUp(this.registerUser).subscribe((res)=>{
+			console.log(res)
+		});
 	}
 	login(){
 		console.log(this.loginUsuer)
-		this._auth.signIn(this.login)
+		this._authUser.signIn(this.loginUsuer).subscribe();
 	}
 }
