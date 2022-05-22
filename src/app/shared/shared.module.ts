@@ -55,7 +55,7 @@ import { NewsletterModalComponent } from './components/modals/newsletter-modal/n
 import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
 import { IsotopeGridComponent } from './components/isotope-grid/isotope-grid.component';
 import { ImageComponent } from './components/image/image.component';
-
+import { AddproductComponent } from './components/modals/addproduct/addproduct.component';
 // // Custom Directives
 import { BgParallaxDirective } from './directives/bg-parallax.directive';
 import { TabClickDirective } from './directives/custom-tab-click.directive';
@@ -109,6 +109,7 @@ import { PostFourComponent } from './components/blog-post/post-four/post-four.co
 		QuickViewTwoComponent,
 		NewsletterModalComponent,
 		LoginModalComponent,
+		AddproductComponent,
 		VideoModalComponent,
 		QuantityInputComponent,
 		CountDownComponent,
@@ -207,7 +208,8 @@ import { PostFourComponent } from './components/blog-post/post-four/post-four.co
 		QuickViewComponent,
 		QuickViewTwoComponent,
 		NewsletterModalComponent,
-		LoginModalComponent
+		LoginModalComponent,
+		AddproductComponent
 	]
 })
 

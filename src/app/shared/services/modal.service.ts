@@ -11,7 +11,7 @@ import { QuickViewTwoComponent } from 'src/app/shared/components/modals/quick-vi
 import { NewsletterModalComponent } from '../components/modals/newsletter-modal/newsletter-modal.component';
 import { LoginModalComponent } from '../components/modals/login-modal/login-modal.component';
 import { VideoModalComponent } from '../components/modals/video-modal/video-modal.component';
-
+import { AddproductComponent } from '../components/modals/addproduct/addproduct.component';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -129,7 +129,13 @@ export class ModalService {
 			this.modalOption2
 		)
 	}
-
+	showLoginModalAddProduct() {
+		(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+		this.modalService.open(
+			AddproductComponent,
+			this.modalOption2
+		)
+	}
 
 	// Show Video modal
 	showVideoModal() {
