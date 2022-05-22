@@ -1,20 +1,20 @@
 <div class="product-details">
     <h1 class="product-title">{{ product.name }}</h1>
 
-    <div class="ratings-container">
+    <!-- <div class="ratings-container">
         <div class="ratings">
             <div class="ratings-val" [style.width]="product.ratings * 20 + '%'"></div>
             <span class="tooltip-text">{{ product.ratings.toFixed(2) }}</span>
         </div>
         <span class="ratings-text">( {{ product.review }} Reviews )</span>
-    </div>
+    </div> -->
 
-    <div class="product-price" *ngIf="!product.stock || product.stock == 0 else elseBlock">
+    <div class="product-price" *ngIf="true else elseBlock">
         <span class="out-price">${{ product.price.toFixed(2) }}</span>
     </div>
 
     <ng-template #elseBlock>
-        <div class="product-price" *ngIf="minPrice == maxPrice else elseBlock">${{ minPrice.toFixed(2) }}</div>
+       <!--  <div class="product-price" *ngIf="minPrice == maxPrice else elseBlock">${{ minPrice.toFixed(2) }}</div>
         <ng-template #elseBlock>
             <div class="product-price" *ngIf="product.variants.length == 0 else elseBlock">
                 <span class="new-price">${{ minPrice.toFixed(2) }}</span>
@@ -23,14 +23,14 @@
             <ng-template #elseBlock>
                 <div class="product-price">${{minPrice.toFixed(2)}}&ndash;${{maxPrice.toFixed(2)}}</div>
             </ng-template>
-        </ng-template>
+        </ng-template> -->
     </ng-template>
 
     <div class="product-content">
-        <p>{{ product.short_desc }}</p>
+        <p>{{ product.description}}</p>
     </div>
 
-    <div *ngIf="product.variants.length > 1">
+    <!-- <div *ngIf="product.variants.length > 1">
         <div class="details-filter-row details-row-size">
             <label>Color:</label>
             <div class="product-nav product-nav-dots">
@@ -55,23 +55,19 @@
             <a href="javascript:;" (click)="clearSelection()"
                 *ngIf="selectedVariant.color || selectedVariant.size != ''">clear</a>
         </div>
-    </div>
+    </div> -->
 
-    <div class="variation-price" style="display: none;">
-        <div class="product-price">
-            ${{ selectedVariant.price ? selectedVariant.price.toFixed( 2 ) : 0 }}
-        </div>
-    </div>
+   
+
 
     <div class="details-filter-row details-row-size">
         <label for="qty">Qty:</label>
-        <molla-quantity-input [max]="product.stock" (changeQty)="onChangeQty( $event )" [value]="qty">
+        <molla-quantity-input [max]="10" (changeQty)="onChangeQty( $event )" [value]="qty">
         </molla-quantity-input>
     </div>
 
     <div class="product-details-action">
         <a href="javascript:;" class="btn-product btn-cart"
-            [class.btn-disabled]="!cartService.canAddToCart( product, qty ) || ( product.variants.length > 0 && !( selectedVariant.color && selectedVariant.size != '' ) )"
             (click)="addCart( $event, 0 )"><span>add to cart</span></a>
 
         <div class="details-action-wrapper">
@@ -83,12 +79,12 @@
     </div>
 
     <div class="product-details-footer">
-        <div class="product-cat w-100 text-truncate">
+        <!-- <div class="product-cat w-100 text-truncate">
             <span>Category:</span>
             <span *ngFor="let cat of product.category; let i =index">
                 <a [routerLink]="['/shop/sidebar/list']"
                     [queryParams]="{category: cat.slug}">{{ cat.name }}</a>{{ i < product.category.length - 1 ? ',' : '' }}</span>
-        </div>
+        </div> -->
 
         <div class="social-icons social-icons-sm">
             <span class="social-label">Share:</span>
@@ -103,14 +99,14 @@
             <div class="row">
                 <div class="col-6">
                     <figure class="product-media">
-                        <a [routerLink]="['/product/default/'+ product.slug]">
-                            <molla-image [src]="SERVER_URL + product.sm_pictures[0].url" alt="Product"
+                        <a [routerLink]="['/product/default/'+ product.name]">
+                            <molla-image [src]="product.picture" alt="Product"
                                 class="product-image">
                             </molla-image>
                         </a>
                     </figure>
                     <h3 class="product-title">
-                        <a [routerLink]="['/product/default/'+ product.slug]">{{ product.name }}</a>
+                        <a [routerLink]="['/product/default/'+ product.name]">{{ product.name }}</a>
                     </h3>
                 </div>
                 <div class="col-6 justify-content-end">
@@ -118,11 +114,12 @@
                         ${{ selectedVariant.price ? selectedVariant.price.toFixed( 2 ) : 0 }}
                     </div>
                     <ng-template #variationPrice>
-                        <div class="product-price" *ngIf="!product.stock || product.stock == 0 else elseBlock">
+                        <!-- <div class="product-price" *ngIf="!product.stock || product.stock == 0 else elseBlock"> -->
+                            <div class="product-price" *ngIf="true else elseBlock">
                             <span class="out-price">${{ product.price.toFixed(2) }}</span>
                         </div>
 
-                        <ng-template #elseBlock>
+                      <!--   <ng-template #elseBlock>
                             <div class="product-price" *ngIf="minPrice == maxPrice else elseBlock">
                                 ${{ minPrice.toFixed(2) }}</div>
                             <ng-template #elseBlock>
@@ -135,24 +132,25 @@
                                     </div>
                                 </ng-template>
                             </ng-template>
-                        </ng-template>
+                        </ng-template> -->
                     </ng-template>
 
-                    <molla-quantity-input [max]="product.stock" (changeQty)="onChangeQty2( $event )" [value]="qty2">
+                    <molla-quantity-input (changeQty)="onChangeQty2( $event )" [value]="qty2">
                     </molla-quantity-input>
-
+<!-- 
                     <div class="product-details-action">
-                        <a href="javascript:;" class="btn-product btn-cart"
+                         <a href="javascript:;" class="btn-product btn-cart"
                             [class.btn-disabled]="!cartService.canAddToCart( product, qty2 ) || ( product.variants.length > 0 && !( selectedVariant.color && selectedVariant.size != '' ) )"
-                            (click)="addCart( $event, 1 )"><span>add to cart</span></a>
+                          
+                            (click)="addCart( $event, 1 )"><span>add to cart</span></a> 
 
-                        <div class="details-action-wrapper ml-0">
+                         <div class="details-action-wrapper ml-0">
                             <a href="javascript:;" class="btn-product btn-wishlist"
                                 [class.added-to-wishlist]="isInWishlist()" (click)="addToWishlist($event)">
                                 <span>{{ isInWishlist() ? 'go' : 'add' }} to wishlist</span>
                             </a>
-                        </div>
-                    </div>
+                        </div> 
+                    </div> -->
                 </div>
             </div>
         </div>

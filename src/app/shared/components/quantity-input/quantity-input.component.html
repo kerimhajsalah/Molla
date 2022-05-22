@@ -5,8 +5,7 @@
                 <i class="icon-minus"></i>
             </button>
         </div>
-        <input type="number" style="text-align: center" class="form-control" required placeholder="" min="1" [max]="max"
-            [value]="current" (input)="changeCurrent($event)">
+        <input  style="text-align: center" class="form-control"  placeholder="" [(ngModel)]="current" >
         <div class="input-group-append">
             <button style="min-width: 26px" class="btn btn-increment btn-spinner" (click)="increment()" type="button">
                 <i class="icon-plus"></i>

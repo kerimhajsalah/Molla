@@ -1,7 +1,7 @@
 <div class="main">
-    <molla-page-header [title]="pageTitle" subtitle="Shop"></molla-page-header>
+    <!-- <molla-page-header [title]="pageTitle" subtitle="Shop"></molla-page-header> -->
     <nav class="breadcrumb-nav mb-2">
-        <div [class]="containerClass">
+        <!-- <div [class]="containerClass">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a routerLink="/">Home</a>
@@ -14,26 +14,26 @@
                     <span>Search - {{ searchTerm }}</span>
                 </li>
             </ol>
-        </div>
+        </div> -->
     </nav>
 
     <div class="page-content">
         <div [class]="containerClass">
             <div class="toolbox">
-                <div class="toolbox-left d-none d-lg-flex">
+                <!-- <div class="toolbox-left d-none d-lg-flex">
                     <a href="javascript:;" class="sidebar-toggler mr-0 mr-md-5" (click)="toggleSidebar()">
                         <i class="icon-bars"></i>Filters
                     </a>
-                </div>
+                </div> -->
 
-                <div class="toolbox-center">
+                <!-- <div class="toolbox-center">
                     <div class="toolbox-info">
                         Showing
                         <span>{{ products.length }} of {{ totalCount }}</span> Products
                     </div>
-                </div>
+                </div> -->
 
-                <div class="toolbox-right">
+                <!-- <div class="toolbox-right">
                     <div class="toolbox-sort">
                         <label for="sortby">Sort by:</label>
                         <div class="select-custom">
@@ -46,18 +46,18 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <molla-shop-list-three [products]="products" [loaded]="loaded" [cols]="cols">
             </molla-shop-list-three>
 
-            <div class="load-more-container text-center" [class.d-none]="totalCount <= products.length && !moreLoading">
+            <!-- <div class="load-more-container text-center" [class.d-none]="totalCount <= products.length && !moreLoading">
                 <a href="javascript:;" class="btn btn-outline-darker btn-load-more" (click)="loadMore($event)">
                     More Products
                     <i class="icon-refresh" [class.load-more-rotating]="moreLoading"></i>
                 </a>
-            </div>
+            </div> -->
 
             <molla-shop-sidebar-one [toggle]="true">
             </molla-shop-sidebar-one>

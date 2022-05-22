@@ -1,9 +1,9 @@
 <nav class="main-nav">
     <ul class="menu sf-arrows">
         <li class="megamenu-container" [class.active]="current=='/'">
-            <a routerLink="/" class="sf-with-ul">Home</a>
+            <a routerLink="/" >Home</a>
 
-            <div class="megamenu demo">
+            <!-- <div class="megamenu demo">
                 <div class="menu-col">
                     <div class="menu-title">Choose your demo</div>
 
@@ -288,12 +288,12 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </li>
         <li [class.active]="current.includes('/shop')">
-            <a routerLink="/shop/sidebar/list" class="sf-with-ul">Shop</a>
+            <a routerLink="/shop/nosidebar/boxed">Shop</a>
 
-            <div class="megamenu megamenu-md">
+            <!-- <div class="megamenu megamenu-md">
                 <div class="row no-gutters">
                     <div class="col-md-8">
                         <div class="menu-col">
@@ -400,7 +400,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </li>
         <li [class.active]="current.includes('/product/')">
             <a routerLink="/product/default/dark-yellow-lace-cut-out-swing-dress" class="sf-with-ul">Product</a>

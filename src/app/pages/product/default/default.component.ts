@@ -30,15 +30,16 @@ export class DefaultPageComponent implements OnInit {
 					this.router.navigate(['/pages/404']);
 				}
 
-				this.product = result.product;
-				this.prev = result.prevProduct;
-				this.next = result.nextProduct;
-				this.related = result.relatedProducts;
+				this.product = result;
+				// this.prev = result.prevProduct;
+				// this.next = result.nextProduct;
+				// this.related = result.relatedProducts;
 				this.loaded = true;
 			});
 		});
 	}
 
 	ngOnInit(): void {
+		console.log(1)
 	}
 }

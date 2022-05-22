@@ -44,8 +44,9 @@ export class ApiService {
 
 		temp += '&demo=' + environment.demo;
 
-		return this.http.get(`${environment.SERVER_URL}/${temp}`);
+		return this.http.get(`${environment.SERVER_URL}/products`);
 	}
+	
 
 	/**
 	 * Get Products
@@ -88,8 +89,8 @@ export class ApiService {
 	/**
 	 * Get products by demo
 	 */
-	public getSingleProduct(slug: string, isQuickView = false): Observable<any> {
-		return this.http.get(`${environment.SERVER_URL}/products/${slug}?demo=${environment.demo}&isQuickView=${isQuickView}`);
+	public getSingleProduct(id: string, isQuickView = false): Observable<any> {
+		return this.http.get(`${environment.SERVER_URL}/products/${id}`);
 	}
 
 	/**

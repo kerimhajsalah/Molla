@@ -48,6 +48,7 @@ export class NosidebarPageComponent implements OnInit {
 	}
 
 	ngOnInit (): void {
+		this.loadProducts();
 	}
 
 	loadProducts () {
@@ -66,8 +67,9 @@ export class NosidebarPageComponent implements OnInit {
 		}
 
 		this.apiService.fetchShopData( this.params, this.perPage ).subscribe( result => {
-			this.products = result.products;
-			this.totalCount = result.totalCount;
+			console.log("result", result);
+			this.products = result;
+			this.totalCount = result.length;
 			this.loaded = true;
 
 			this.utilsService.scrollToPageContent();

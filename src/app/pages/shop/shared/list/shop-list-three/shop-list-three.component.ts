@@ -10,7 +10,7 @@ export class ShopListThreeComponent implements OnInit {
 
 	@Input() type: string;
 	@Input() products = [];
-	@Input() loaded = false;
+	@Input() loaded = true;
 	@Input() containerClass = 'container';
 	@Input() cols = "col-6 col-md-4 col-lg-4 col-xl-3";
 
@@ -18,5 +18,9 @@ export class ShopListThreeComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		setTimeout(() => {
+			console.log("propppppp", this.products)
+		}, 500);
+		// console.log("products", this.products);
 	}
 }

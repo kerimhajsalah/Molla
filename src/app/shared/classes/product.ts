@@ -16,6 +16,8 @@ export interface Product {
 		name?: string;
 		slug?: string;
 	}>;
+	description? : string;
+	picture?:string;
 	pictures?: Array<{
 		width?: number;
 		height?: number;

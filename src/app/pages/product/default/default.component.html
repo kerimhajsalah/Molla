@@ -1,6 +1,6 @@
 <main class="main">
-    <molla-breadcrumb current="Default" [prev]="prev" [next]="next">
-    </molla-breadcrumb>
+    <!-- <molla-breadcrumb current="Default" [prev]="prev" [next]="next">
+    </molla-breadcrumb> -->
 
     <div class="page-content default-page">
         <div class="container skeleton-body">
@@ -11,7 +11,7 @@
                         <product-gallery-default [product]="product" *ngIf="loaded"></product-gallery-default>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="margin-top: 10%;">
                         <div class="entry-summary row">
                             <div class="col-md-12">
                                 <div class="entry-summary1 mt-2 mt-md-0"></div>
@@ -20,7 +20,7 @@
                                 <div class="entry-summary2"></div>
                             </div>
                         </div>
-                        <product-detail-one [product]="product" *ngIf="loaded"></product-detail-one>
+                        <product-detail-one [product]="product" *ngIf="loaded" ></product-detail-one>
                     </div>
                 </div>
             </div>

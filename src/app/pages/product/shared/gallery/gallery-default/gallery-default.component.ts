@@ -36,19 +36,20 @@ export class GalleryDefaultComponent implements OnInit {
 	}
 
 	ngOnChanges() {
-		this.album = [];
+		this.album = [{src : this.product.picture , thumb:this.product.picture , caption: this.product.name }];
 
-		for (let i = 0; i < this.product.pictures.length; i++) {
-			this.album.push({
-				src: this.SERVER_URL + this.product.pictures[i].url,
-				thumb: this.SERVER_URL + this.product.sm_pictures[i].url,
-				caption: this.product.name
-			});
-		}
+		// for (let i = 0; i < this.product.pictures.length; i++) {
+		// 	this.album.push({
+		// 		src: this.SERVER_URL + this.product.pictures[i].url,
+		// 		thumb: this.SERVER_URL + this.product.sm_pictures[i].url,
+		// 		caption: this.product.name
+		// 	});
+		// }
 	}
 
 	ngOnInit(): void {
-		this.paddingTop = Math.floor((parseFloat(this.product.pictures[0].height.toString()) / parseFloat(this.product.pictures[0].width.toString()) * 1000)) / 10 + '%';
+	console.log("hahahaaha",	this.album)
+			// this.paddingTop = Math.floor((parseFloat(this.product.pictures[0].height.toString()) / parseFloat(this.product.pictures[0].width.toString()) * 1000)) / 10 + '%';
 
 	}
 

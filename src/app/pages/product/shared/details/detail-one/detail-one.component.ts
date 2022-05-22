@@ -46,31 +46,35 @@ export class DetailOneComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		console.log(2,this.qty2)
 		let min = this.minPrice;
 		let max = this.maxPrice;
-		this.variationGroup = this.product.variants.reduce((acc, cur) => {
-			cur.size.map(item => {
-				acc.push({
-					color: cur.color,
-					colorName: cur.color_name,
-					size: item.name,
-					price: cur.price
-				});
-			});
-			if (min > cur.price) min = cur.price;
-			if (max < cur.price) max = cur.price;
-			return acc;
-		}, []);
+		setTimeout(() => {
+			console.log("producttttt", this.product);
+		}, 500);
+		// this.variationGroup = this.product.variants.reduce((acc, cur) => {
+		// 	cur.size.map(item => {
+		// 		acc.push({
+		// 			color: cur.color,
+		// 			colorName: cur.color_name,
+		// 			size: item.name,
+		// 			price: cur.price
+		// 		});
+		// 	});
+		// 	if (min > cur.price) min = cur.price;
+		// 	if (max < cur.price) max = cur.price;
+		// 	return acc;
+		// }, []);
 
-		if (this.product.variants.length == 0) {
-			min = this.product.sale_price
-				? this.product.sale_price
-				: this.product.price;
-			max = this.product.price;
-		}
+		// if (this.product.variants.length == 0) {
+		// 	min = this.product.sale_price
+		// 		? this.product.sale_price
+		// 		: this.product.price;
+		// 	max = this.product.price;
+		// }
 
-		this.minPrice = min;
-		this.maxPrice = max;
+		// this.minPrice = min;
+		// this.maxPrice = max;
 
 		this.refreshSelectableGroup();
 	}
@@ -101,6 +105,7 @@ export class DetailOneComponent implements OnInit {
 		}
 
 		this.cartService.addToCart(
+
 			newProduct, index == 0 ? this.qty : this.qty2
 		);
 	}
@@ -126,69 +131,71 @@ export class DetailOneComponent implements OnInit {
 	}
 
 	isInWishlist() {
-		return this.wishlistService.isInWishlist(this.product);
+		// return this.wishlistService.isInWishlist(this.product);
+		return false;
+
 	}
 
 	refreshSelectableGroup() {
-		let tempArray = [...this.variationGroup];
-		if (this.selectedVariant.color) {
-			tempArray = this.variationGroup.reduce((acc, cur) => {
-				if (this.selectedVariant.color !== cur.color) {
-					return acc;
-				}
-				return [...acc, cur];
-			}, []);
-		}
+		// let tempArray = [...this.variationGroup];
+		// if (this.selectedVariant.color) {
+		// 	tempArray = this.variationGroup.reduce((acc, cur) => {
+		// 		if (this.selectedVariant.color !== cur.color) {
+		// 			return acc;
+		// 		}
+		// 		return [...acc, cur];
+		// 	}, []);
+		// }
 
-		this.sizeArray = tempArray.reduce((acc, cur) => {
-			if (acc.findIndex(item => item.size == cur.size) !== -1)
-				return acc;
-			return [...acc, cur];
-		}, []);
+		// this.sizeArray = tempArray.reduce((acc, cur) => {
+		// 	if (acc.findIndex(item => item.size == cur.size) !== -1)
+		// 		return acc;
+		// 	return [...acc, cur];
+		// }, []);
 
-		tempArray = [...this.variationGroup];
-		if (this.selectedVariant.size) {
-			tempArray = this.variationGroup.reduce((acc, cur) => {
-				if (this.selectedVariant.size !== cur.size) {
-					return acc;
-				}
-				return [...acc, cur];
-			}, []);
-		}
+		// tempArray = [...this.variationGroup];
+		// if (this.selectedVariant.size) {
+		// 	tempArray = this.variationGroup.reduce((acc, cur) => {
+		// 		if (this.selectedVariant.size !== cur.size) {
+		// 			return acc;
+		// 		}
+		// 		return [...acc, cur];
+		// 	}, []);
+		// }
 
-		this.colorArray = this.product.variants.reduce((acc, cur) => {
-			if (
-				tempArray.findIndex(item => item.color == cur.color) == -1
-			) {
-				return [
-					...acc,
-					{
-						color: cur.color,
-						colorName: cur.color_name,
-						price: cur.price,
-						disabled: true
-					}
-				];
-			}
-			return [
-				...acc,
-				{
-					color: cur.color,
-					colorName: cur.color_name,
-					price: cur.price,
-					disabled: false
-				}
-			];
-		}, []);
+		// this.colorArray = this.product.variants.reduce((acc, cur) => {
+		// 	if (
+		// 		tempArray.findIndex(item => item.color == cur.color) == -1
+		// 	) {
+		// 		return [
+		// 			...acc,
+		// 			{
+		// 				color: cur.color,
+		// 				colorName: cur.color_name,
+		// 				price: cur.price,
+		// 				disabled: true
+		// 			}
+		// 		];
+		// 	}
+		// 	return [
+		// 		...acc,
+		// 		{
+		// 			color: cur.color,
+		// 			colorName: cur.color_name,
+		// 			price: cur.price,
+		// 			disabled: false
+		// 		}
+		// 	];
+		// }, []);
 
-		let toggle = this.el.nativeElement.querySelector('.variation-price');
-		if (toggle) {
-			if (this.selectedVariant.color && this.selectedVariant.size != "") {
-				$(toggle).slideDown();
-			} else {
-				$(toggle).slideUp();
-			}
-		}
+		// let toggle = this.el.nativeElement.querySelector('.variation-price');
+		// if (toggle) {
+		// 	if (this.selectedVariant.color && this.selectedVariant.size != "") {
+		// 		$(toggle).slideDown();
+		// 	} else {
+		// 		$(toggle).slideUp();
+		// 	}
+		// }
 	}
 
 	selectColor(event: Event, item: any) {
@@ -225,10 +232,14 @@ export class DetailOneComponent implements OnInit {
 	}
 
 	onChangeQty(current: number) {
+		console.log(3,this.qty2+current)
+		console.log("currreeeeentjkzkjqshqsjhqius", current)
 		this.qty = current;
 	}
 
 	onChangeQty2(current: number) {
+		console.log(4,this.qty2+current)
+		console.log("currreeeeent", current)
 		this.qty2 = current;
 	}
 
