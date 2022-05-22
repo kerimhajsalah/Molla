@@ -24,9 +24,11 @@ function getState(key: string) {
 export function cartReducer(state = getState('molla'), action) {
     switch (action.type) {
         case ADD_TO_CART:
+            console.log('catched' ,state.data ,action.payload  );
+            
             var findIndex = state.data.findIndex(item => item.id == action.payload.product.id);
             let qty = action.payload.qty ? action.payload.qty : 1;
-            if (findIndex !== -1 && action.payload.product.variants.length > 0) {
+            if (findIndex !== -1 ) {
                 findIndex = state.data.findIndex(item => item.name == action.payload.product.name);
             }
 
@@ -38,7 +40,7 @@ export function cartReducer(state = getState('molla'), action) {
                                 acc.push({
                                     ...product,
                                     qty: product.qty + qty,
-                                    sum: (action.payload.product.sale_price ? action.payload.product.sale_price : action.payload.product.price) * (product.qty + qty)
+                                    sum: (action.payload.product.sale_price ? action.payload.product.sale_price : action.payload.product.price) * (1 + qty)
                                 });
                             } else {
                                 acc.push(product);
@@ -49,6 +51,7 @@ export function cartReducer(state = getState('molla'), action) {
                     ]
                 }
             } else {
+                console.log("hahahaha")
                 return {
                     data: [
                         ...state.data,

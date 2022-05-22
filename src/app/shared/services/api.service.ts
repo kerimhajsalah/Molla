@@ -46,8 +46,15 @@ export class ApiService {
 
 		return this.http.get(`${environment.SERVER_URL}/products`);
 	}
-	
-
+	public addProduct(product){
+		return this.http.post(`${environment.SERVER_URL}/products`, product);
+	}
+	public updateProduct(product,id){
+		return this.http.put(`${environment.SERVER_URL}/products/${id}`, product);
+	}
+	public createCommande(commande , products){
+		return this.http.post(`${environment.SERVER_URL}/commandes`, {commande,products});
+	}
 	/**
 	 * Get Products
 	 */

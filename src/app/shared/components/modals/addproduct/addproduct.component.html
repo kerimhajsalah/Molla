@@ -12,27 +12,26 @@
                         <form action="#" >
                             <div class="form-group">
                                 <label for="singin-email">Name</label>
-                                <input type="text" class="form-control" id="singin-email" ngModel [ngModelOptions]="{standalone: true}" [(ngModel)]="loginUsuer.email"  name="singin-email" required>
+                                <input type="text" class="form-control" id="name" ngModel [ngModelOptions]="{standalone: true}" [(ngModel)]="addProduct.name"  name="name" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="singin-password">PRICE</label>
-                                <input type="number" class="form-control" id="singin-password" [(ngModel)]="loginUsuer.password" name="singin-password"
+                                <input type="number" class="form-control" id="price" [(ngModel)]="addProduct.price" name="price"
                                     required>
                             </div>
                             <div class="form-group">
                                 <label for="singin-password">Qty</label>
-                                <input type="number" class="form-control" id="singin-password" [(ngModel)]="loginUsuer.password" name="singin-password"
+                                <input type="number" class="form-control" id="qty" [(ngModel)]="addProduct.qty" name="qty"
                                     required>
                             </div>
                             <div class="form-group">
                                 <label for="singin-password">DESC</label>
-                                <input type="text" class="form-control" id="singin-password" [(ngModel)]="loginUsuer.password" name="singin-password"
+                                <input type="text" class="form-control" id="desc" [(ngModel)]="addProduct.description" name="desc"
                                     required>
                             </div>
                             <div class="form-group">
-                                <input type="file" class="file-input"
-                                (change)="onFileSelected($event)" #fileUpload>
+                                <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
                          
                          <div class="file-upload">
                          
@@ -40,13 +39,14 @@
                          
                              <button mat-mini-fab color="primary" class="upload-btn"
                                (click)="fileUpload.click()">
-                             aaa
-                             </button>
+                               <i class="icon-arrow-up"></i>                             </button>
                          </div>
                             </div>
                             <div class="form-footer">
                                 <button type="submit" (click)="login()" class="btn btn-outline-primary-2">
-                                    <span>Add</span>
+                                    <span *ngIf="!update">Add</span>
+                                    <span *ngIf="update">UPDATE</span>
+
                                     <i class="icon-long-arrow-right"></i>
                                 </button>
 

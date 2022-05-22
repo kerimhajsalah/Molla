@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from 'src/app/shared/services/api.service';
+import { ModalService } from 'src/app/shared/services/modal.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component( {
@@ -24,8 +25,8 @@ export class NosidebarPageComponent implements OnInit {
 	loaded = false;
 	moreLoading = false;
 	params = {};
-
-	constructor ( public activeRoute: ActivatedRoute, public router: Router, public utilsService: UtilsService, public apiService: ApiService ) {
+	role : string;
+	constructor ( public activeRoute: ActivatedRoute, public router: Router, public utilsService: UtilsService,public modalService: ModalService, public apiService: ApiService ) {
 		this.activeRoute.params.subscribe( params => {
 			this.type = params[ 'type' ];
 			this.perPage = 12;
@@ -48,6 +49,7 @@ export class NosidebarPageComponent implements OnInit {
 	}
 
 	ngOnInit (): void {
+		this.role = localStorage.getItem('role');
 		this.loadProducts();
 	}
 
@@ -79,7 +81,10 @@ export class NosidebarPageComponent implements OnInit {
 	changeOrderBy ( event: any ) {
 		this.router.navigate( [], { queryParams: { orderBy: event.currentTarget.value, page: 1 }, queryParamsHandling: 'merge' } );
 	}
-
+	showAddProductModal(event: Event): void {
+		event.preventDefault();
+		this.modalService.showLoginModalAddProduct();
+	}
 	toggleSidebar () {
 		if ( document.querySelector( 'body' ).classList.contains( 'sidebar-filter-active' ) )
 			document.querySelector( 'body' ).classList.remove( 'sidebar-filter-active' );

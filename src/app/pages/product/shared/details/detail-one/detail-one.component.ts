@@ -87,21 +87,21 @@ export class DetailOneComponent implements OnInit {
 	}
 
 	addCart(event: Event, index = 0) {
+		console.log('rrr',event)
 		event.preventDefault();
 		if ((event.currentTarget as HTMLElement).classList.contains('btn-disabled')) return;
 
 		let newProduct = { ...this.product };
-		if (this.product.variants.length > 0) {
+		if (true) {
 			newProduct = {
 				...this.product,
 				name:
-					this.product.name +
-					' - ' +
-					this.selectedVariant.colorName +
-					', ' +
-					this.selectedVariant.size,
-				price: this.selectedVariant.price
+					this.product.name ,
+				
+				price: this.product.price
 			};
+			console.log('product',this.product)
+			console.log('newProduct',newProduct)
 		}
 
 		this.cartService.addToCart(
@@ -111,6 +111,7 @@ export class DetailOneComponent implements OnInit {
 	}
 
 	addToWishlist(event: Event) {
+		console.log(444)
 		event.preventDefault();
 
 		if (this.isInWishlist()) {

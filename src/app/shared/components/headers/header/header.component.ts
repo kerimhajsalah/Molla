@@ -24,6 +24,6 @@ export class HeaderComponent implements OnInit {
 
 	showLoginModal(event: Event): void {
 		event.preventDefault();
-		this.modalService.showLoginModalAddProduct();
+		this.modalService.showLoginModal();
 	}
 }

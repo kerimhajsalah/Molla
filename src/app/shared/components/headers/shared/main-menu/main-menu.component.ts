@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 export class MainMenuComponent implements OnInit, OnDestroy {
 
 	current = '/';
-
+	role
 	private subscr: Subscription;
 
 	constructor(private router: Router) {
@@ -24,6 +24,7 @@ export class MainMenuComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
+		this.role= localStorage.getItem("role");
 	}
 
 	ngOnDestroy(): void {

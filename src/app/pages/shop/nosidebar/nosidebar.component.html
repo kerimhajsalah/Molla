@@ -19,6 +19,14 @@
 
     <div class="page-content">
         <div [class]="containerClass">
+            <div class="row" >
+                <div class="col-sm-8">
+                </div>
+                <div>
+                    <a class="btn btn-outline-dark-2 btn-block mb-3" *ngIf="role=='admin'" (click)="showAddProductModal($event)" ><span>ADD</span><i class="ti-plus"></i></a>
+                </div>
+
+            </div>
             <div class="toolbox">
                 <!-- <div class="toolbox-left d-none d-lg-flex">
                     <a href="javascript:;" class="sidebar-toggler mr-0 mr-md-5" (click)="toggleSidebar()">

@@ -30,6 +30,9 @@
                     <span>add to cart</span>
                 </button>
             </ng-template>
+            <button class="btn-product btn-quickview" title="update" (click)="openUpdateProduct($event)">
+                <span>update</span>
+            </button>
             <!-- <button class="btn-product btn-quickview" title="Quick view" (click)="quickView($event)">
                 <span>quick view</span>
             </button>
@@ -56,7 +59,7 @@
         <div><span>{{product.description}}</span></div>
 
         <ng-template #elseBlock>
-            <div class="product-price" *ngIf="minPrice == maxPrice else elseBlock">${{ minPrice.toFixed(2) }}</div>
+            <!-- <div class="product-price" *ngIf="minPrice == maxPrice else elseBlock">${{ minPrice.toFixed(2) }}</div>
             <ng-template #elseBlock>
                 <div class="product-price" *ngIf="product.variants.length == 0 else elseBlock">
                     <span class="new-price">${{ minPrice.toFixed(2) }}</span>
@@ -65,7 +68,7 @@
                 <ng-template #elseBlock>
                     <div class="product-price">${{minPrice.toFixed(2)}}&ndash;${{maxPrice.toFixed(2)}}</div>
                 </ng-template>
-            </ng-template>
+            </ng-template> -->
         </ng-template>
 
         <!-- <div class="ratings-container">

@@ -129,12 +129,17 @@ export class ModalService {
 			this.modalOption2
 		)
 	}
-	showLoginModalAddProduct() {
+	showLoginModalAddProduct(product? : any) {
 		(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
-		this.modalService.open(
+		const modalRef =	this.modalService.open(
 			AddproductComponent,
-			this.modalOption2
+			this.modalOption2,
 		)
+		if(product){
+			modalRef.componentInstance.product =product
+		}
+		
+
 	}
 
 	// Show Video modal

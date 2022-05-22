@@ -1,17 +1,21 @@
-import { Component, OnInit ,ChangeDetectorRef,ElementRef,ViewChild} from '@angular/core';
+import { Component, OnInit ,ChangeDetectorRef,ElementRef,ViewChild, Input} from '@angular/core';
 import { ConfigServiceService } from 'src/app/config-service.service';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { FormBuilder, FormArray, Validators } from "@angular/forms";
 import{ HttpClient } from '@angular/common/http';
+import { UploadClient } from '@uploadcare/upload-client';
+
 @Component({
   selector: 'molla-addproduct',
   templateUrl: './addproduct.component.html',
   styleUrls: ['./addproduct.component.scss']
 })
 export class AddproductComponent implements OnInit {
-
+  client = new UploadClient({ publicKey: '8984836541096889c993' })
+  @Input() public product;
+  update = false ;
 	constructor(private _auth: ConfigServiceService, private _authUser:ApiService ,public fb: FormBuilder,
-    private cd: ChangeDetectorRef,private http: HttpClient) {
+    private cd: ChangeDetectorRef,private http: HttpClient ) {
     
    }
     registerUser = {
@@ -30,7 +34,20 @@ export class AddproductComponent implements OnInit {
 		email:"",
 		password:""
 	}
+  addProduct = {
+		name:"",
+		description:"",
+    price : 0,
+    qty : 0,
+    picture:""
+	}
+  file ;
 	ngOnInit(): void {
+    if(this.product){
+      this.addProduct=this.product
+      this.update= true;
+
+    }
 	}
  /*##################### Registration Form #####################*/
  registrationForm = this.fb.group({
@@ -45,20 +62,7 @@ removeUpload: boolean = false;
 fileName=""
 onFileSelected(event) {
 
-  const file:File = event.target.files[0];
-
-  if (file) {
-
-      this.fileName = file.name;
-
-      const formData = new FormData();
-
-      formData.append("thumbnail", file);
-
-      const upload$ = this.http.post("/api/thumbnail-upload", formData);
-
-      upload$.subscribe();
-  }
+  this.file = event.target.files[0];
 }
 uploadFile(event) {
   let reader = new FileReader(); // HTML5 FileReader API
@@ -115,8 +119,30 @@ removeUploadedFile() {
 		});
 	}
 	login(){
-		console.log(this.loginUsuer)
-		this._authUser.signIn(this.loginUsuer).subscribe();
+    if(!this.product){
+      this.client.uploadFile(this.file).then((res)=>{
+        this.addProduct.picture= res.cdnUrl;
+        console.log("this is the upload result", res);
+        console.log("addProduct", this.addProduct);
+        this._authUser.addProduct(this.addProduct).subscribe();
+        this.closeModal()
+  
+      })
+    }
+    else {
+      this.client.uploadFile(this.file).then((res)=>{
+        this.addProduct.picture= res.cdnUrl;
+        console.log("this is the upload result", res);
+        console.log("addProduct", this.addProduct);
+        this._authUser.updateProduct(this.addProduct,this.product.id).subscribe();
+        this.closeModal()
+  
+      })
+    }
+    
+
+		// console.log(this.loginUsuer)
+		// this._authUser.signIn(this.loginUsuer).subscribe();
 	}
   
 }

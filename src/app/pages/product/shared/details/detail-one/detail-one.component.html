@@ -10,7 +10,7 @@
     </div> -->
 
     <div class="product-price" *ngIf="true else elseBlock">
-        <span class="out-price">${{ product.price.toFixed(2) }}</span>
+        <span class="out-price">${{ product.price }}</span>
     </div>
 
     <ng-template #elseBlock>
@@ -110,13 +110,13 @@
                     </h3>
                 </div>
                 <div class="col-6 justify-content-end">
-                    <div class="product-price" *ngIf="selectedVariant.color && selectedVariant.size != '' else variationPrice">
+                  <!--   <div class="product-price" *ngIf="false else variationPrice">
                         ${{ selectedVariant.price ? selectedVariant.price.toFixed( 2 ) : 0 }}
-                    </div>
+                    </div> -->
                     <ng-template #variationPrice>
                         <!-- <div class="product-price" *ngIf="!product.stock || product.stock == 0 else elseBlock"> -->
                             <div class="product-price" *ngIf="true else elseBlock">
-                            <span class="out-price">${{ product.price.toFixed(2) }}</span>
+                          <!--   <span class="out-price">${{ product.price.toFixed(2) }}</span> -->
                         </div>
 
                       <!--   <ng-template #elseBlock>

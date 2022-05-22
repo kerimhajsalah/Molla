@@ -23,6 +23,7 @@ import { MarketPageComponent } from './market/market.component';
 import { ShopListOneComponent } from './shared/list/shop-list-one/shop-list-one.component';
 import { ShopListTwoComponent } from './shared/list/shop-list-two/shop-list-two.component';
 import { ShopListThreeComponent } from './shared/list/shop-list-three/shop-list-three.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule( {
 	declarations: [
@@ -49,7 +50,8 @@ import { ShopListThreeComponent } from './shared/list/shop-list-three/shop-list-
 		RouterModule,
 		NgbModule,
 		OwlModule,
-		NouisliderModule
+		NouisliderModule,
+		FormsModule
 	]
 } )
 

@@ -30,7 +30,8 @@ export class ProductTenComponent implements OnInit {
 		private modalService: ModalService,
 		private cartService: CartService,
 		private wishlistService: WishlistService,
-		private compareService: CompareService
+		private compareService: CompareService,
+		
 	) { }
 
 	ngOnInit(): void {
@@ -72,6 +73,10 @@ export class ProductTenComponent implements OnInit {
 		event.preventDefault();
 		if (this.isInCompare()) return;
 		this.compareService.addToCompare(this.product);
+	}
+	openUpdateProduct(event: Event){
+		event.preventDefault();
+		this.modalService.showLoginModalAddProduct(this.product);
 	}
 
 	quickView(event: Event) {

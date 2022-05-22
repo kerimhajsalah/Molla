@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfigServiceService } from 'src/app/config-service.service';
 import { ApiService } from 'src/app/shared/services/api.service';
 @Component({
@@ -9,7 +10,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 
 export class LoginModalComponent implements OnInit {
 
-	constructor(private _auth: ConfigServiceService, private _authUser:ApiService) { }
+	constructor(private _auth: ConfigServiceService, private _authUser:ApiService , private router : Router) { }
     registerUser = {
 		firstname:"",
 		lastname:"",
@@ -42,6 +43,13 @@ export class LoginModalComponent implements OnInit {
 	}
 	login(){
 		console.log(this.loginUsuer)
-		this._authUser.signIn(this.loginUsuer).subscribe();
+		this._authUser.signIn(this.loginUsuer).subscribe((res)=>{
+			console.log(res);
+			localStorage.setItem("token", res.token);
+			localStorage.setItem("role" , res.role);
+			if (res.token){
+				location.reload();
+			}
+		});
 	}
 }

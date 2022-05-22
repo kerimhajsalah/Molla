@@ -290,117 +290,10 @@
                 </div>
             </div> -->
         </li>
-        <li [class.active]="current.includes('/shop')">
+        <li [class.active]="current.includes('/shop')" *ngIf="role !='admin'">
             <a routerLink="/shop/nosidebar/boxed">Shop</a>
 
-            <!-- <div class="megamenu megamenu-md">
-                <div class="row no-gutters">
-                    <div class="col-md-8">
-                        <div class="menu-col">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="menu-title">Shop with sidebar</div>
-
-                                    <ul>
-                                        <li [class.active]="current.includes('shop/sidebar/list')">
-                                            <a routerLink="/shop/sidebar/list">Shop List</a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/sidebar/2cols')">
-                                            <a routerLink="/shop/sidebar/2cols">Shop Grid 2 Columns</a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/sidebar/3cols')">
-                                            <a routerLink="/shop/sidebar/3cols">Shop Grid 3 Columns</a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/sidebar/4cols')">
-                                            <a routerLink="/shop/sidebar/4cols">Shop Grid 4 Columns</a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/market')">
-                                            <a routerLink="/shop/market">
-                                                <span>
-                                                    Shop Market
-                                                    <span class="tip tip-new">New</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="menu-title">Shop no sidebar</div>
-
-                                    <ul>
-                                        <li [class.active]="current.includes('shop/nosidebar/boxed')">
-                                            <a routerLink="/shop/nosidebar/boxed">
-                                                <span>
-                                                    Shop Boxed No Sidebar
-                                                    <span class="tip tip-hot">Hot</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/nosidebar/fullwidth')">
-                                            <a routerLink="/shop/nosidebar/fullwidth">Shop Fullwidth No Sidebar</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="menu-title">Product Category</div>
-
-                                    <ul>
-                                        <li [class.active]="current.includes('shop/category/boxed')">
-                                            <a routerLink="/shop/category/boxed">Product Category Boxed</a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/category/fullwidth')">
-                                            <a routerLink="/shop/category/fullwidth">
-                                                <span>
-                                                    Product Category Fullwidth
-                                                    <span class="tip tip-new">New</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="menu-title">Shop Pages</div>
-
-                                    <ul>
-                                        <li [class.active]="current.includes('shop/cart')">
-                                            <a routerLink="/shop/cart">Cart</a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/checkout')">
-                                            <a routerLink="/shop/checkout">Checkout</a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/wishlist')">
-                                            <a routerLink="/shop/wishlist">Wishlist</a>
-                                        </li>
-                                        <li [class.active]="current.includes('shop/dashboard')">
-                                            <a routerLink="/shop/dashboard">My Account</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">Lookbook</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="banner banner-overlay">
-                            <a routerLink="/shop/sidebar/list" class="banner banner-menu">
-                                <img src="assets/images/menu/banner-1.jpg" alt="Banner" width="218" height="314" />
-
-                                <div class="banner-content banner-content-top">
-                                    <div class="banner-title text-white">
-                                        Last
-                                        <br />Chance
-                                        <br />
-                                        <span>
-                                            <strong>Sale</strong>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            
         </li>
         <li [class.active]="current.includes('/product/')">
             <a routerLink="/product/default/dark-yellow-lace-cut-out-swing-dress" class="sf-with-ul">Product</a>
@@ -624,6 +517,10 @@
                     <a routerLink="/elements/icon-boxes">Icon Boxes</a>
                 </li>
             </ul>
+        </li>
+        <li [class.active]="current.includes('/shop')" *ngIf="role=='admin'">
+            <a routerLink="/shop/nosidebar/boxed">admin Panel</a>
+            
         </li>
     </ul>
 </nav>

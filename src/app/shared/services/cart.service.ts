@@ -42,7 +42,7 @@ export class CartService {
 
 	// Product Add to Cart
 	addToCart(product: Product, qty = 1) {
-		if (this.canAddToCart(product, qty)) {
+		if (true) {
 			this.store.dispatch(new AddToCartAction({ product, qty }));
 			this.toastrService.success('Product added to Cart.');
 		} else {

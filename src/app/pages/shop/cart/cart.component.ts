@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/shared/services/cart.service';
 
 import { environment } from 'src/environments/environment';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
 	selector: 'shop-cart-page',
@@ -17,10 +18,16 @@ export class CartComponent implements OnInit, OnDestroy {
 	cartItems = [];
 	SERVER_URL = environment.SERVER_URL;
 	shippingCost = 0;
+	commande = {
+		firstName :"",
+		lastName :"",
+		phone : "",
+		address:""
+	}
 
 	private subscr: Subscription;
 
-	constructor(private store: Store<any>, public cartService: CartService) {
+	constructor(private store: Store<any>, public cartService: CartService , private apiService : ApiService) {
 	}
 
 	ngOnInit() {
@@ -51,6 +58,11 @@ export class CartComponent implements OnInit, OnDestroy {
 
 	changeShipping(value: number) {
 		this.shippingCost = value;
+	}
+	validateCommande(){
+
+		console.log("commande created", this.commande , this.cartItems);
+		this.apiService.createCommande(this.commande,this.cartItems).subscribe();
 	}
 
 	onChangeQty(event: number, product: any) {
