@@ -23,20 +23,22 @@ export class WishlistComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this.subscr = this.wishlistService.wishlistStream.subscribe(items => {
+			console.log(items)
 			this.wishItems = items.reduce((acc, product) => {
 				let max = 0;
 				let min = 999999;
-				product.variants.map(item => {
+				console.log(product)
+				items.map(item => {
 					if (min > item.price) min = item.price;
 					if (max < item.price) max = item.price;
 				}, []);
-
-				if (product.variants.length == 0) {
+				console.log(product)
+			/* 	if (product.variants.length == 0) {
 					min = product.sale_price
 						? product.sale_price
 						: product.price;
 					max = product.price;
-				}
+				} */
 
 				return [
 					...acc,
@@ -48,6 +50,10 @@ export class WishlistComponent implements OnInit, OnDestroy {
 				];
 			}, []);
 		});
+		console.log("wedeeishh",this.wishItems)
+		setTimeout(() => {
+			console.log("wishh",this.wishItems)
+		}, 500);
 	}
 
 	ngOnDestroy(): void {

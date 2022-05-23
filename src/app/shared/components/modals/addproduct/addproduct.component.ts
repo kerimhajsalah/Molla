@@ -46,6 +46,7 @@ export class AddproductComponent implements OnInit {
     if(this.product){
       this.addProduct=this.product
       this.update= true;
+      this.fileName=this.addProduct.picture
 
     }
 	}
@@ -63,6 +64,12 @@ fileName=""
 onFileSelected(event) {
 
   this.file = event.target.files[0];
+  this.client.uploadFile(this.file).then((res)=>{
+    this.addProduct.picture= res.cdnUrl;
+    this.fileName=res.name
+   console.log(res)
+
+  })
 }
 uploadFile(event) {
   let reader = new FileReader(); // HTML5 FileReader API

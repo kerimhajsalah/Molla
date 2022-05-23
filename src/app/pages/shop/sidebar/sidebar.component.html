@@ -6,9 +6,9 @@
                 <li class="breadcrumb-item">
                     <a routerLink="/">Home</a>
                 </li>
-                <li class="breadcrumb-item">
+            <!--     <li class="breadcrumb-item">
                     <a routerLink="/shop/sidebar/list">Shop</a>
-                </li>
+                </li> -->
                 <li class="breadcrumb-item active">{{ pageTitle }}</li>
                 <li class="breadcrumb-item" *ngIf="searchTerm != ''">
                     <span>Search - {{ searchTerm }}</span>
@@ -63,7 +63,7 @@
                                         <rect x="6" y="6" width="4" height="4" />
                                     </svg>
                                 </a>
-
+<!-- 
                                 <a routerLink="/shop/sidebar/3cols" queryParamsHandling="merge" class="btn-layout"
                                    routerLinkActive="active">
                                     <svg width="16" height="10">
@@ -83,12 +83,16 @@
                                         <rect x="6" y="0" width="4" height="4" />
                                         <rect x="12" y="0" width="4" height="4" />
                                         <rect x="18" y="0" width="4" height="4" />
+                                   
+                                   
+                                   
+                                   
                                         <rect x="0" y="6" width="4" height="4" />
                                         <rect x="6" y="6" width="4" height="4" />
                                         <rect x="12" y="6" width="4" height="4" />
                                         <rect x="18" y="6" width="4" height="4" />
                                     </svg>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
@@ -108,8 +112,8 @@
                         <div class="skel-widget"></div>
                     </div>
                     <ng-template #sidebarLoaded>
-                        <molla-shop-sidebar-one [toggle]="toggle">
-                        </molla-shop-sidebar-one>
+                       <!--  <molla-shop-sidebar-one [toggle]="toggle">
+                        </molla-shop-sidebar-one> -->
 
                         <button class="sidebar-fixed-toggler" (click)="toggleSidebar()" *ngIf="toggle">
                             <i class="icon-cog"></i>

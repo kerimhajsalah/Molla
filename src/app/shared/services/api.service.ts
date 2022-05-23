@@ -17,8 +17,12 @@ export class ApiService {
 	 * Get Products
 	 */
 	public signUp(user) : Observable<any>{
-		console.log("user",user) 
+		console.log("usesssr",user) 
 	 return this.http.post<any>("http://localhost:3000/users/" , user);
+	 }
+	 public getUser(user) : Observable<any>{
+		console.log("user",user) 
+	 return this.http.get<any>(`http://localhost:3000/users/${user}` );
 	 }
 	public signIn(user): Observable<any> {
 		console.log("catched")

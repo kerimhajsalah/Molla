@@ -25,7 +25,7 @@ export class SidebarPageComponent implements OnInit {
 	constructor(public activeRoute: ActivatedRoute, public router: Router, public utilsService: UtilsService, public apiService: ApiService) {
 		this.activeRoute.params.subscribe(params => {
 			this.type = params['type'];
-
+console.log("tyyyyy",this.type)
 			if (this.type == 'list') {
 				this.pageTitle = 'List';
 			} else if (this.type == '2cols') {
@@ -51,10 +51,13 @@ export class SidebarPageComponent implements OnInit {
 			} else {
 				this.orderBy = 'default';
 			}
-
+			console.log("this.products",this.products)
 			this.apiService.fetchShopData(params, this.perPage).subscribe(result => {
-				this.products = result.products;
-				this.totalCount = result.totalCount;
+				console.log("pppp",this.products)
+				console.log("result",result)
+			
+				this.products = result;
+				this.totalCount = 5000;
 
 				this.loaded = true;
 				if (!this.firstLoad) {
@@ -67,7 +70,7 @@ export class SidebarPageComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		if (window.innerWidth > 991) this.toggle = false;
+		if (window.innerWidth > 991) this.toggle = false
 		else this.toggle = true;
 	}
 
@@ -78,6 +81,7 @@ export class SidebarPageComponent implements OnInit {
 	}
 
 	changeOrderBy(event: any) {
+		console.log('eeee',event)
 		this.router.navigate([], { queryParams: { orderBy: event.currentTarget.value, page: 1 }, queryParamsHandling: 'merge' });
 	}
 

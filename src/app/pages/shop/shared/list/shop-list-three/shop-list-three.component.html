@@ -10,7 +10,7 @@
             </div>
         </div>
         <ng-template #elseBlock>
-            <div class="row">
+            <div class="row"  *ngIf="products.length>0">
                 <div [ngClass]="cols" *ngFor="let product of products">
                     <molla-product-ten [product]="product" style="width: 100%"></molla-product-ten>
                 </div>

@@ -1,9 +1,9 @@
 <nav class="main-nav">
-    <ul class="menu sf-arrows">
+    <ul class="menu sf-arrows" style="align-items: center;margin-left:50%;">
         <li class="megamenu-container" [class.active]="current=='/'">
             <a routerLink="/" >Home</a>
 
-            <!-- <div class="megamenu demo">
+          <!-- <div class="megamenu demo">
                 <div class="menu-col">
                     <div class="menu-title">Choose your demo</div>
 
@@ -288,14 +288,14 @@
                         </a>
                     </div>
                 </div>
-            </div> -->
+            </div>  -->
         </li>
         <li [class.active]="current.includes('/shop')" *ngIf="role !='admin'">
             <a routerLink="/shop/nosidebar/boxed">Shop</a>
 
             
         </li>
-        <li [class.active]="current.includes('/product/')">
+     <!--    <li [class.active]="current.includes('/product/')">
             <a routerLink="/product/default/dark-yellow-lace-cut-out-swing-dress" class="sf-with-ul">Product</a>
 
             <div class="megamenu megamenu-sm">
@@ -359,50 +359,16 @@
                     </div>
                 </div>
             </div>
+        </li> -->
+     
+   
+   
+        <li [class.active]="current.includes('/shop/sidebar/list')" >
+            <a routerLink="/shop/sidebar/list">List</a>
+
+            
         </li>
-        <li [class.active]="current.includes('/pages')">
-            <a href="javascript:;" class="sf-with-ul">Pages</a>
-
-            <ul>
-                <li [class.active]="current.includes('pages/about')">
-                    <a routerLink="/pages/about" class="sf-with-ul">About</a>
-
-                    <ul>
-                        <li>
-                            <a routerLink="/pages/about">About 01</a>
-                        </li>
-                        <li>
-                            <a routerLink="/pages/about-2">About 02</a>
-                        </li>
-                    </ul>
-                </li>
-                <li [class.active]="current.includes('pages/contact')">
-                    <a routerLink="/pages/contact" class="sf-with-ul">Contact</a>
-
-                    <ul>
-                        <li>
-                            <a routerLink="/pages/contact">Contact 01</a>
-                        </li>
-                        <li>
-                            <a routerLink="/pages/contact-2">Contact 02</a>
-                        </li>
-                    </ul>
-                </li>
-                <li [class.active]="current.includes('pages/login')">
-                    <a routerLink="/pages/login">Login</a>
-                </li>
-                <li [class.active]="current.includes('pages/faq')">
-                    <a routerLink="/pages/faq">FAQs</a>
-                </li>
-                <li [class.active]="current.includes('pages/404')">
-                    <a routerLink="/pages/404">Error 404</a>
-                </li>
-                <li [class.active]="current.includes('pages/coming-soon')">
-                    <a routerLink="/pages/coming-soon">Coming Soon</a>
-                </li>
-            </ul>
-        </li>
-        <li [class.active]="current.includes('/blog/')">
+     <!--    <li [class.active]="current.includes('/blog/')">
             <a routerLink="/blog/classic" class="sf-with-ul">Blog</a>
             <ul>
                 <li [class.active]="current.includes('blog/classic')">
@@ -517,9 +483,19 @@
                     <a routerLink="/elements/icon-boxes">Icon Boxes</a>
                 </li>
             </ul>
-        </li>
+        </li> -->
         <li [class.active]="current.includes('/shop')" *ngIf="role=='admin'">
-            <a routerLink="/shop/nosidebar/boxed">admin Panel</a>
+            <a routerLink="/shop/nosidebar/boxed">adminPanel</a>
+            
+        </li>
+        <li [class.active]="current.includes('pages/about')" >
+            <a routerLink="/pages/about">About</a>
+
+            
+        </li>
+        <li [class.active]="current.includes('pages/contact')" >
+            <a routerLink="/pages/contact">Contact</a>
+
             
         </li>
     </ul>

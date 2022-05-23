@@ -56,7 +56,7 @@
         <div class="product-price" *ngIf="true else elseBlock">
             <span class="out-price" style="color: #a6c76c;">${{ product.price.toFixed(2) }}</span>
         </div>
-        <div><span>{{product.description}}</span></div>
+        <div><span>{{product.description.slice(0,15)}}</span></div>
 
         <ng-template #elseBlock>
             <!-- <div class="product-price" *ngIf="minPrice == maxPrice else elseBlock">${{ minPrice.toFixed(2) }}</div>

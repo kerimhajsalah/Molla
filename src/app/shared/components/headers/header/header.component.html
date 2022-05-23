@@ -3,8 +3,8 @@
         <div [class]="containerClass">
             <div class="header-left overflow-hidden mr-3 mr-sm-0">
                 <div class="welcome-msg d-flex flex-nowrap">
-                    <!-- <p>Special collection already available.</p>
-                    <a href="javascript:;">&nbsp;Read more ...</a> -->
+                   <p></p>
+                    <a href="javascript:;">&nbsp;ParaPharmacie ...</a> 
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                             </li> -->
-                            <li class="login"><a href="javascript:;" (click)="showLoginModal($event)">Sign in / Sign
+                            <li  class="login"><a *ngIf="!roleBoolean" href="javascript:;" (click)="showLoginModal($event)">Sign in / Sign
                                     up</a></li>
                         </ul>
                     <!-- </li> -->
@@ -53,7 +53,7 @@
                 <molla-mobile-button></molla-mobile-button>
 
                 <a routerLink="/" class="logo">
-                    <img src="assets/images/logo.png" alt="Molla Logo" width="104" height="27">
+                    <img src="assets/images/paraaa.jpg" alt="Molla Logo" width="104" height="19">
                 </a>
             </div>
 

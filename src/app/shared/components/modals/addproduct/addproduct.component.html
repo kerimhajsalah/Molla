@@ -34,12 +34,17 @@
                                 <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
                          
                          <div class="file-upload">
+                         <div class="row">
+                           uploaded 
                          
-                            {{fileName || "No file uploaded yet."}}
-                         
-                             <button mat-mini-fab color="primary" class="upload-btn"
-                               (click)="fileUpload.click()">
-                               <i class="icon-arrow-up"></i>                             </button>
+                            <button mat-mini-fab color="primary" class="upload-btn"
+                              (click)="fileUpload.click()">
+                              <i class="icon-arrow-up"></i>                          
+                              </button>
+                              <img [src]="addProduct.picture" alt="Molla Logo" width="104" height="27">
+                         </div>
+                       
+                               
                          </div>
                             </div>
                             <div class="form-footer">
@@ -49,7 +54,7 @@
 
                                     <i class="icon-long-arrow-right"></i>
                                 </button>
-
+                              
                              
                             </div>
                         </form>

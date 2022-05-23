@@ -19,7 +19,7 @@ export class ShopListThreeComponent implements OnInit {
 
 	ngOnInit(): void {
 		setTimeout(() => {
-			console.log("propppppp", this.products)
+			console.log("propppppp", this.products.length)
 		}, 500);
 		// console.log("products", this.products);
 	}

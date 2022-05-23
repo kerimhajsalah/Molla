@@ -47,6 +47,7 @@ export class LoginModalComponent implements OnInit {
 			console.log(res);
 			localStorage.setItem("token", res.token);
 			localStorage.setItem("role" , res.role);
+			localStorage.setItem("user" , res.user);
 			if (res.token){
 				location.reload();
 			}

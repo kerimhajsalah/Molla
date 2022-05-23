@@ -28,5 +28,6 @@ export class ShopListOneComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		console.log('eeee',this.products)
 	}
 }

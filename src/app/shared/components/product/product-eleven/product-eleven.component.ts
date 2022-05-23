@@ -36,15 +36,15 @@ export class ProductElevenComponent implements OnInit {
 	ngOnInit(): void {
 		let min = this.minPrice;
 		let max = this.maxPrice;
+console.log("tttdttdd",this.product)
+		this.product
+			if (min > this.product.price) min = this.product.price;
+			if (max < this.product.price) max = this.product.price;
+		
 
-		this.product.variants.map(item => {
-			if (min > item.price) min = item.price;
-			if (max < item.price) max = item.price;
-		}, []);
-
-		if (this.product.variants.length == 0) {
-			min = this.product.sale_price
-				? this.product.sale_price
+		if (this.product) {
+			min = this.product.price
+				? this.product.price
 				: this.product.price;
 			max = this.product.price;
 		}

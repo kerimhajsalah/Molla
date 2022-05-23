@@ -15,11 +15,17 @@ export class HeaderComponent implements OnInit {
 	@Input() containerClass = "container";
 
 	wishCount = 0;
-
+    roleUser :String="";
+	roleBoolean:Boolean=false;
 	constructor(public activeRoute: ActivatedRoute, public utilsService: UtilsService, public modalService: ModalService) {
 	}
 
 	ngOnInit(): void {
+		this.roleUser=localStorage.getItem('role')
+		if(this.roleUser!=null){
+			this.roleBoolean=true
+		}
+		console.log("localStorage.getItem('role')",this.roleUser)
 	}
 
 	showLoginModal(event: Event): void {

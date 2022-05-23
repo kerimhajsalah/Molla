@@ -33,6 +33,7 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
 	}
 
 	searchProducts(event: any) {
+		console.log("edzsklkds",event)
 		this.searchTerm = event.target.value;
 		if (this.searchTerm.length > 2) {
 			if (this.timer) {
@@ -41,6 +42,7 @@ export class HeaderSearchComponent implements OnInit, OnDestroy {
 
 			this.timer = setTimeout(() => {
 				this.apiService.fetchHeaderSearchData(this.searchTerm).subscribe(result => {
+					console.log("yyeyeyyeerrr",result)
 					this.suggestions = result.products.reduce(
 						(acc, cur) => {
 							let max = 0;

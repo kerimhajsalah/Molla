@@ -41,53 +41,53 @@
                             <td class="product-col">
                                 <div class="product">
                                     <figure class="product-media">
-                                        <a [routerLink]="['/product/default/'+ product.slug]">
-                                            <molla-image [src]="SERVER_URL + product.sm_pictures[0].url" alt="Product">
+                                        <a [routerLink]="['/product/default/'+ product.id]">
+                                            <molla-image [src]="product.picture" alt="Product">
                                             </molla-image>
                                         </a>
                                     </figure>
 
                                     <h3 class="product-title">
-                                        <a [routerLink]="['/product/default/'+ product.slug]">{{ product.name }}</a>
+                                        <a [routerLink]="['/product/default/'+ product.id]">{{ product.name }}</a>
                                     </h3>
                                 </div>
                             </td>
                             <td class="price-col">
-                                <div class="product-price d-inline-block mb-0"
-                                    *ngIf="!product.stock || product.stock == 0 else elseBlock">
+                               <div class="product-price d-inline-block mb-0"
+                                    *ngIf="true else elseBlock">
                                     <span class="out-price">${{ product.price.toFixed(2) }}</span>
                                 </div>
 
                                 <ng-template #elseBlock>
                                     <div class="product-price d-inline-block mb-0"
-                                        *ngIf="product.minPrice == product.maxPrice else elseBlock">
-                                        ${{ product.minPrice.toFixed(2) }}
+                                        *ngIf="product.price == product.maxPrice else elseBlock">
+                                        ${{ product.price.toFixed(2) }}
                                     </div>
                                     <ng-template #elseBlock>
                                         <div class="product-price d-inline-block mb-0"
                                             *ngIf="product.variants.length == 0 else elseBlock">
-                                            <span class="new-price">${{ product.minPrice.toFixed(2) }}</span>
-                                            <span class="old-price">${{ product.maxPrice.toFixed(2) }}</span>
+                                            <span class="new-price">${{ product.price.toFixed(2) }}</span>
+                                            <span class="old-price">${{ product.price.toFixed(2) }}</span>
                                         </div>
                                         <ng-template #elseBlock>
                                             <div class="product-price d-inline-block mb-0">
-                                                ${{product.minPrice.toFixed(2)}}&ndash;${{product.maxPrice.toFixed(2)}}
+                                                ${{product.price.toFixed(2)}}&ndash;${{product.price.toFixed(2)}}
                                             </div>
                                         </ng-template>
                                     </ng-template>
-                                </ng-template>
+                                </ng-template> 
                             </td>
                             <td class="stock-col">
-                                <span class="in-stock" *ngIf="product.stock > 0">In stock</span>
-                                <span class="out-of-stock" *ngIf="product.stock < 1">Out of stock</span>
+                                 <span class="in-stock" *ngIf="product.qty > 0">In stock</span>
+                                <span class="out-of-stock" *ngIf="product.qty < 1">Out of stock</span> 
                             </td>
                             <td class="action-col">
-                                <button class="btn btn-block btn-outline-primary-2" *ngIf="product.stock > 0"
-                                    (click)="wishlistService.moveToCart( product )"><i class="icon-cart-plus"></i>Add to
+                                <button class="btn btn-block btn-outline-primary-2" *ngIf="product.qty > 0"
+                               (click)="wishlistService.moveToCart( product )"><i class="icon-cart-plus"></i>Add to
                                     Cart</button>
                                 <button class="btn btn-block btn-outline-primary-2 disabled"
-                                    *ngIf="product.stock < 1">Out
-                                    of Stock</button>
+                                    *ngIf="product.qty < 1">Out
+                                    of Stock</button> 
                             </td>
                             <td class="remove-col"><button class="btn-remove"
                                     (click)="wishlistService.removeFromWishList( product )"><i
