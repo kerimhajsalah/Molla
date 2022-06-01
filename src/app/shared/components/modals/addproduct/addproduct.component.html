@@ -9,7 +9,7 @@
                 <li ngbNavItem>
                     <a ngbNavLink>Add Product</a>
                     <ng-template ngbNavContent>
-                        <form action="#" >
+                        <form  (ngSubmit)="login()" >
                             <div class="form-group">
                                 <label for="singin-email">Name</label>
                                 <input type="text" class="form-control" id="name" ngModel [ngModelOptions]="{standalone: true}" [(ngModel)]="addProduct.name"  name="name" required>
@@ -47,10 +47,38 @@
                                
                          </div>
                             </div>
+                            
+                            <div class="form-group">
+                                <label for="size">Size:</label>
+                                <div class="select-custom">
+                                    <select name="size" id="categorie" class="form-control" [value]="addProduct.categorie" (change)="selectCategory($event)">
+                                        <option value="" >Select a size</option>
+                                        <option value="Visage" >Visage</option>
+                                        <option value="Cheveux" >Cheveux</option>
+                                        <option value="Corps" >Corps</option>
+                                        <option value="Bébé et Maman" >Bébé et Maman</option>
+                                        <option value="Compléments alimentaire" >Compléments alimentaire</option>
+                                        <option value="Hygiene" >Hygiene</option>
+                                        <option value="Solaire" >Solaire</option>
+                                        <option value="Bio et naturel" >Bio et naturel</option>
+                                        <option value="Matériel Medical">Matériel Medical</option>
+                                        <option value="" >Homme</option>
+                                    </select>
+                                </div>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="size">Sous catégorie</label>
+                                <div class="select-custom">
+                                    <select name="sc" id="sc" class="form-control" [(ngModel)]="addProduct.SC"  (change)="selectSC($event)">
+                                        <option value="" >Select a size</option>
+                                        <option *ngFor="let item of SousCategories" [value]="item">{{item}}</option>
+                                    </select>
+                                </div>                            
+                            </div>
                             <div class="form-footer">
-                                <button type="submit" (click)="login()" class="btn btn-outline-primary-2">
-                                    <span *ngIf="!update">Add</span>
-                                    <span *ngIf="update">UPDATE</span>
+                                <button  type="submit" class="btn btn-outline-primary-2">
+                                    <span *ngIf="!update" (click)="login()">Add</span>
+                                    <span *ngIf="update" (click)="login()">UPDATE</span>
 
                                     <i class="icon-long-arrow-right"></i>
                                 </button>

@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { FormBuilder, FormArray, Validators } from "@angular/forms";
 import{ HttpClient } from '@angular/common/http';
 import { UploadClient } from '@uploadcare/upload-client';
+declare var $: any;
 
 @Component({
   selector: 'molla-addproduct',
@@ -39,15 +40,22 @@ export class AddproductComponent implements OnInit {
 		description:"",
     price : 0,
     qty : 0,
-    picture:""
+    picture:"",
+    categorie:"",
+    SC:""
 	}
   file ;
+  SousCategories=[];
 	ngOnInit(): void {
     if(this.product){
       this.addProduct=this.product
       this.update= true;
-      this.fileName=this.addProduct.picture
+      this.fileName=this.addProduct.picture;
 
+      console.log("addProductCategorie", this.product);
+      this.selectCategoryOnInit(this.addProduct.categorie);
+      // this.selectSCOnInt(this.addProduct.SC)
+      console.log("sousCategorie",this.SousCategories);
     }
 	}
  /*##################### Registration Form #####################*/
@@ -70,6 +78,100 @@ onFileSelected(event) {
    console.log(res)
 
   })
+}
+selectCategory(event){
+ var res = $(event.target).val();
+ this.addProduct.categorie=res;
+switch (res) {
+  case 'Visage':
+    this.SousCategories=["Soins hydratants et nourrissants","Soins anti-âge et anti-rides","Maquillage","Yeux et lèvres",
+    "Démaquillants, nettoyants visage","Soins peau grasse, mixte et acné"]
+    break;
+  case 'Cheveux':
+      this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+      "Produits coiffants" ,"Compléments cheveux et ongles"]
+      break;
+  case 'Corps':
+    this.SousCategories=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
+      "Parfum"]
+    break;
+  case 'Bébé et maman':
+    this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+    break;
+  case 'Compléments alimentaire':
+    this.SousCategories=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
+        "Parfum"]
+    break;
+  case 'Hygiene':
+    this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+    break;
+  case 'Solaire':
+      this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+      "Produits coiffants" ,"Compléments cheveux et ongles"]
+      break;
+  case 'Bio et naturel':
+        this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+        break;
+  case 'Matériel Medical':
+          this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+          "Produits coiffants" ,"Compléments cheveux et ongles"]
+          break;
+  default:
+    this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+    break;
+}
+
+}
+selectCategoryOnInit(value){
+ switch (value) {
+   case 'Visage':
+     this.SousCategories=["Soins hydratants et nourrissants","Soins anti-âge et anti-rides","Maquillage","Yeux et lèvres",
+     "Démaquillants, nettoyants visage","Soins peau grasse, mixte et acné"]
+     break;
+   case 'Cheveux':
+       this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+       "Produits coiffants" ,"Compléments cheveux et ongles"]
+       break;
+   case 'Corps':
+     this.SousCategories=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
+       "Parfum"]
+     break;
+   case 'Bébé et maman':
+     this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+     break;
+   case 'Compléments alimentaire':
+     this.SousCategories=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
+         "Parfum"]
+     break;
+   case 'Hygiene':
+     this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+     break;
+   case 'Solaire':
+       this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+       "Produits coiffants" ,"Compléments cheveux et ongles"]
+       break;
+   case 'Bio et naturel':
+         this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+         break;
+   case 'Matériel Medical':
+           this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+           "Produits coiffants" ,"Compléments cheveux et ongles"]
+           break;
+   default:
+     this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+     break;
+ }
+ 
+ }
+selectSC(event){
+  var selectCategory = $(event.target).val();
+  this.addProduct.SC=selectCategory;
+  console.log("eveeeebr",selectCategory);
+}
+selectSCOnInt(value){
+
+  this.addProduct.SC=value;
+  console.log("eveeeebr",value);
 }
 uploadFile(event) {
   let reader = new FileReader(); // HTML5 FileReader API
@@ -115,7 +217,10 @@ removeUploadedFile() {
 }
 
 	closeModal() {
+    console.log("eee111",)
+    this.addProduct=this.product;
 		let modal = document.querySelector('.login-modal') as HTMLElement;
+    console.log("eee111",modal)
 		if (modal)
 			modal.click();
 	}
@@ -137,14 +242,13 @@ removeUploadedFile() {
       })
     }
     else {
-      this.client.uploadFile(this.file).then((res)=>{
-        this.addProduct.picture= res.cdnUrl;
-        console.log("this is the upload result", res);
+      // this.client.uploadFile(this.file).then((res)=>{
+        // this.addProduct.picture= res.cdnUrl;
         console.log("addProduct", this.addProduct);
         this._authUser.updateProduct(this.addProduct,this.product.id).subscribe();
         this.closeModal()
   
-      })
+      // })
     }
     
 
