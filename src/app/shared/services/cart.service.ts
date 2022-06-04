@@ -41,9 +41,9 @@ export class CartService {
 	}
 
 	// Product Add to Cart
-	addToCart(product: Product, qty = 1) {
+	addToCart(product: Product, exist?, pourcentage?, qty = 1 ) {
 		if (true) {
-			this.store.dispatch(new AddToCartAction({ product, qty }));
+			this.store.dispatch(new AddToCartAction({ product, qty , exist : exist , pourcentage : pourcentage }));
 			this.toastrService.success('Product added to Cart.');
 		} else {
 			this.toastrService.error('Sorry, you can\'t add that amount to the cart.');

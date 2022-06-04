@@ -21,7 +21,21 @@ export class IndexComponent implements OnInit {
 	brandSlider = brandSlider;
 
 	constructor(public apiService: ApiService, public utilsService: UtilsService, private modalService: ModalService,) {
-		this.modalService.openNewsletter();
+		this.apiService.getPromotion().subscribe((res : any)=>{
+			const now = new Date();
+			console.log("reeeeeeeeeeeees",res)
+			if((new Date(res[0].startDate)).getTime()< now.getTime() && (new Date(res[0].endDate)).getTime()>now.getTime()){
+				// this.exist = true ;
+				// this.pourcentage= res[0].Pourcentage
+				this.modalService.openNewsletter();
+
+			}
+			else {
+			// this.exist = false;
+			}
+			
+		})
+		
 
 		this.apiService.fetchHomeData().subscribe(result => {
 			this.products = result.products;

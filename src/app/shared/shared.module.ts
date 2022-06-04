@@ -72,6 +72,9 @@ import { PostOneComponent } from './components/blog-post/post-one/post-one.compo
 import { PostTwoComponent } from './components/blog-post/post-two/post-two.component';
 import { PostThreeComponent } from './components/blog-post/post-three/post-three.component';
 import { PostFourComponent } from './components/blog-post/post-four/post-four.component';
+import { PromotionComponent } from './components/modals/promotion/promotion.component';
+import { CommandeProductsComponent } from './components/modals/commande-products/commande-products.component';
+import { FactureComponent } from './components/modals/facture/facture.component';
 
 @NgModule({
 	declarations: [
@@ -136,7 +139,10 @@ import { PostFourComponent } from './components/blog-post/post-four/post-four.co
 		PostTwoComponent,
 		PostThreeComponent,
 		PostFourComponent,
-		CountToComponent
+		CountToComponent,
+  PromotionComponent,
+  CommandeProductsComponent,
+  FactureComponent
 	],
 
 	imports: [

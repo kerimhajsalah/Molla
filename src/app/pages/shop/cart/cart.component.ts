@@ -26,7 +26,8 @@ export class CartComponent implements OnInit, OnDestroy {
 	}
 
 	private subscr: Subscription;
-
+	exist = false;
+	pourcentage;
 	constructor(private store: Store<any>, public cartService: CartService , private apiService : ApiService) {
 	}
 
@@ -34,6 +35,19 @@ export class CartComponent implements OnInit, OnDestroy {
 		this.subscr = this.cartService.cartStream.subscribe(items => {
 			this.cartItems = items;
 		});
+		this.apiService.getPromotion().subscribe((res : any)=>{
+			const now = new Date();
+			if((new Date(res[0].startDate)).getTime()< now.getTime() && (new Date(res[0].endDate)).getTime()>now.getTime()){
+				this.exist = true ;
+				this.pourcentage= res[0].Pourcentage
+
+			}
+			else {
+			// this.exist = false;
+			}
+			
+		})
+		console.log("eee",this.cartItems)
 	}
 
 	ngOnDestroy() {
@@ -46,13 +60,13 @@ export class CartComponent implements OnInit, OnDestroy {
 	}
 
 	updateCart(event: any) {
-		event.preventDefault();
-		event.target.parentElement.querySelector('.icon-refresh').classList.add('load-more-rotating');
+		// event.preventDefault();
+		// event.target.parentElement.querySelector('.icon-refresh').classList.add('load-more-rotating');
 
 		setTimeout(() => {
 			this.cartService.updateCart(this.cartItems);
-			event.target.parentElement.querySelector('.icon-refresh').classList.remove('load-more-rotating');
-			document.querySelector('.btn-cart-update:not(.diabled)') && document.querySelector('.btn-cart-update').classList.add('disabled');
+			// event.target.parentElement.querySelector('.icon-refresh').classList.remove('load-more-rotating');
+			// document.querySelector('.btn-cart-update:not(.diabled)') && document.querySelector('.btn-cart-update').classList.add('disabled');
 		}, 400);
 	}
 
@@ -73,12 +87,13 @@ export class CartComponent implements OnInit, OnDestroy {
 				acc.push({
 					...cur,
 					qty: event,
-					sum: (cur.sale_price ? cur.sale_price : cur.price) * event
+					sum: (this.exist ? cur.price - cur.price*this.pourcentage/100 : cur.price) * event
 				});
 			}
 			else acc.push(cur);
 
 			return acc;
 		}, [])
+		this.updateCart(event)
 	}
 }

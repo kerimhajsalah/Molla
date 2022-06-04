@@ -16,9 +16,21 @@
                 <div [class]="'skel-pro ' + grid[type]" *ngFor="let item of fakeArray[type]"></div>
             </div>
             <ng-template #elseBlock>
+                <div class="row" >
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="btn btn-outline-dark-2 btn-block mb-3" *ngIf="role=='admin'" (click)="showPromotionModal($event)" ><span>Promotion</span><i class="ti-plus"></i></a>
+                    </div>
+                    <div class="col-sm-2">
+                        <a class="btn btn-outline-dark-2 btn-block mb-3" *ngIf="role=='admin'" (click)="showAddProductModal($event)" ><span>Ajouter Produit</span><i class="ti-plus"></i></a>
+
+                    </div>
+    
+                </div>
                 <div class="row">
                     <div [class]="grid[type]" *ngFor="let product of products">
-                        <molla-product-eleven [product]="product" class="w-100"></molla-product-eleven>
+                        <molla-product-ten [product]="product" [date]="date"  [exist] ="exist" [pourcentage]="pourcentage" class="w-100"></molla-product-ten>
                     </div>
                 </div>
             </ng-template>

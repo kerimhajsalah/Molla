@@ -40,7 +40,7 @@ export function cartReducer(state = getState('molla'), action) {
                                 acc.push({
                                     ...product,
                                     qty: product.qty + qty,
-                                    sum: (action.payload.product.sale_price ? action.payload.product.sale_price : action.payload.product.price) * (1 + qty)
+                                    sum: (action.payload.exist ? action.payload.product.price - action.payload.product.price * action.payload.pourcentage/100: action.payload.product.price) * (1 + qty)
                                 });
                             } else {
                                 acc.push(product);
@@ -59,7 +59,7 @@ export function cartReducer(state = getState('molla'), action) {
                             ...action.payload.product,
                             qty: qty,
                             price: action.payload.product.sale_price ? action.payload.product.sale_price : action.payload.product.price,
-                            sum: qty * (action.payload.product.sale_price ? action.payload.product.sale_price : action.payload.product.price)
+                            sum: qty * (action.payload.exist ? action.payload.product.price - action.payload.product.price * action.payload.pourcentage/100: action.payload.product.price)
                         }
                     ]
                 };

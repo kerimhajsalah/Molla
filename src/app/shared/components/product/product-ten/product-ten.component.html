@@ -1,11 +1,11 @@
 <div class="product no-span">
     <figure class="product-media">
         <!-- <span class="product-label label-new" *ngIf="product.new">New</span>
-        <span class="product-label label-sale" *ngIf="product.sale_price">Sale</span>
-        <span class="product-label label-top" *ngIf="product.top">Top</span>
-        <span class="product-label label-out" *ngIf="!product.stock || product.stock == 0">Out Of Stock</span> -->
+         <span class="product-label label-sale" *ngIf="product.sale_price">Sale</span> -->
+        <span class="product-label label-top" *ngIf="exist">{{pourcentage}}%</span>
+       <!-- <span class="product-label label-out" *ngIf="!product.stock || product.stock == 0">Out Of Stock</span> -->
 
-        <a [routerLink]="['/product/default/'+ product.slug]">
+        <a [routerLink]="['/product/default/'+ product.id]">
             <molla-image [src]="product.picture" alt="Product" class="product-image">
             </molla-image>
             <!-- <molla-image [src]="SERVER_URL + product.sm_pictures[1].url" alt="Product" class="product-image-hover"
@@ -30,7 +30,7 @@
                     <span>add to cart</span>
                 </button>
             </ng-template>
-            <button class="btn-product btn-quickview" title="update" (click)="openUpdateProduct($event)">
+            <button class="btn-product btn-quickview" title="update"  *ngIf="role" (click)="openUpdateProduct($event)">
                 <span>update</span>
             </button>
             <!-- <button class="btn-product btn-quickview" title="Quick view" (click)="quickView($event)">
@@ -43,32 +43,32 @@
     </figure>
 
     <div class="product-body">
-        <!-- <div class="product-cat">
-            <span *ngFor="let cat of product.category; let i =index">
-                <a [routerLink]="['/shop/sidebar/list']" [queryParams]="{category: cat.slug}">{{ cat.name }}</a>{{ i < product.category.length - 1 ? ',' : '' }}
+        <div class="product-cat">
+            <span *ngIf="exist">
+                <a >{{ date }}</a>
             </span>
-        </div> -->
+        </div>
 
         <h3 class="product-title">
             <a [routerLink]="['/product/default/'+product.id]">{{ product.name }}</a>
         </h3>
 
-        <div class="product-price" *ngIf="true else elseBlock">
+        <div class="product-price" *ngIf="!exist else elseBlock">
             <span class="out-price" style="color: #a6c76c;">${{ product.price.toFixed(2) }}</span>
         </div>
         <div><span>{{product.description.slice(0,15)}}</span></div>
 
         <ng-template #elseBlock>
-            <!-- <div class="product-price" *ngIf="minPrice == maxPrice else elseBlock">${{ minPrice.toFixed(2) }}</div>
+            <div class="product-price" *ngIf="!exist else elseBlock">${{ minPrice.toFixed(2) }}</div>
             <ng-template #elseBlock>
-                <div class="product-price" *ngIf="product.variants.length == 0 else elseBlock">
-                    <span class="new-price">${{ minPrice.toFixed(2) }}</span>
-                    <span class="old-price">${{ maxPrice.toFixed(2) }}</span>
+                <div class="product-price" *ngIf="true else elseBlock">
+                    <span class="new-price">${{product.price - product.price *pourcentage/100 }}</span>
+                    <span class="old-price">${{product.price}}</span>
                 </div>
                 <ng-template #elseBlock>
-                    <div class="product-price">${{minPrice.toFixed(2)}}&ndash;${{maxPrice.toFixed(2)}}</div>
+                    <!-- <div class="product-price">${{minPrice.toFixed(2)}}&ndash;${{maxPrice.toFixed(2)}}</div> -->
                 </ng-template>
-            </ng-template> -->
+            </ng-template>
         </ng-template>
 
         <!-- <div class="ratings-container">

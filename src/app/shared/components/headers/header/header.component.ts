@@ -32,4 +32,12 @@ export class HeaderComponent implements OnInit {
 		event.preventDefault();
 		this.modalService.showLoginModal();
 	}
+	logout(){
+		localStorage.removeItem("token");
+		localStorage.removeItem("role");
+		localStorage.removeItem("user");
+		setTimeout(() => {
+			location.reload();
+		}, 300);	
+	}
 }

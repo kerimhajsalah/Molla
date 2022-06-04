@@ -67,6 +67,7 @@ export class NosidebarPageComponent implements OnInit {
 		} else {
 			this.orderBy = 'default';
 		}
+		
 
 		this.apiService.fetchShopData( this.params, this.perPage ).subscribe( result => {
 			console.log("result", result);

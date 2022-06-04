@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
 	selector: 'molla-shop-list-one',
@@ -11,6 +13,7 @@ export class ShopListOneComponent implements OnInit {
 	@Input() type: string;
 	@Input() products = [];
 	@Input() loaded = false;
+	role : string;
 
 	grid = {
 		"2cols": "col-6",
@@ -23,11 +26,36 @@ export class ShopListOneComponent implements OnInit {
 		"3cols": [1, 2, 3, 4, 5, 6, 7, 8, 9],
 		"4cols": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 	}
-
-	constructor() {
+	exist = false;
+	pourcentage = 100;
+	date='';
+	constructor(public modalService: ModalService , private apiService : ApiService) {
 	}
 
 	ngOnInit(): void {
-		console.log('eeee',this.products)
+		this.apiService.getPromotion().subscribe((res : any)=>{
+			const now = new Date();
+			console.log("reeeeeeeeeeeees",res)
+			if((new Date(res[0].startDate)).getTime()< now.getTime() && (new Date(res[0].endDate)).getTime()>now.getTime()){
+				this.exist = true ;
+				this.pourcentage= res[0].Pourcentage
+				this.date="Promotion : "+res[0].startDate.substring(0,10)+" - "+res[0].endDate.substring(0,10);
+				console.log("date String",res[0].startDate.substring(0,10)+" - "+res[0].endDate.substring(0,10))
+			}
+			else {
+			this.exist = false;
+			}
+			
+		})
+		this.role = localStorage.getItem('role');
+	}
+
+	showAddProductModal(event: Event): void {
+		event.preventDefault();
+		this.modalService.showLoginModalAddProduct();
+	}
+	showPromotionModal(event: Event): void {
+		event.preventDefault();
+		this.modalService.showModalFacture();
 	}
 }

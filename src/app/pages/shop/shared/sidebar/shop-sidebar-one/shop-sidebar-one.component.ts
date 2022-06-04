@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { shopData } from '../../data';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,10 +15,25 @@ export class ShopSidebarOneComponent implements OnInit {
 	shopData = shopData;
 	params = {};
 	priceRange: any = [0, 100];
-
+	visageSC = ["Soins hydratants et nourrissants","Soins anti-âge et anti-rides","Maquillage","Yeux et lèvres",
+    "Démaquillants, nettoyants visage","Soins peau grasse, mixte et acné"];
+	cheveuxSC = ["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+	"Produits coiffants" ,"Compléments cheveux et ongles"];
+	corpsSC = ["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
+	"Parfum"];
+	bbmmSC = ["Puériculture","Toilette & soins bébé","Change de bébé"];
+	compAlimSC=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
+	"Parfum"];
+	HygSC = ["Puériculture","Toilette & soins bébé","Change de bébé"];
+	SolaireSC = ["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+	"Produits coiffants" ,"Compléments cheveux et ongles"];
+	bioNatSC = ["Puériculture","Toilette & soins bébé","Change de bébé"];
+	MatMediSC = ["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
+	"Produits coiffants" ,"Compléments cheveux et ongles"];
+	HommeSC = ["Puériculture","Toilette & soins bébé","Change de bébé"];
+	@Output() newCategorieEvent = new EventEmitter();
 	@ViewChild('priceSlider') priceSlider: any;
-
-	constructor(public activeRoute: ActivatedRoute, public router: Router) {
+	constructor(public activeRoute: ActivatedRoute, public router: Router ) {
 		activeRoute.queryParams.subscribe(params => {
 			this.params = params;
 			if (params['minPrice'] && params['maxPrice']) {
@@ -43,7 +58,10 @@ export class ShopSidebarOneComponent implements OnInit {
 		const currentQueries = this.params[type] ? this.params[type].split(',') : [];
 		return currentQueries && currentQueries.includes(value);
 	}
-
+	filterBySC(item){
+		console.log("eventEmetted");
+		this.newCategorieEvent.emit(item);
+	}
 	getUrlForAttrs(type: string, value: string) {
 		let currentQueries = this.params[type] ? this.params[type].split(',') : [];
 		currentQueries = this.containsAttrInUrl(type, value) ? currentQueries.filter(item => item !== value) : [...currentQueries, value];

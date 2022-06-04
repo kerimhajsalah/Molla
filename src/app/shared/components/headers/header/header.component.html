@@ -38,7 +38,9 @@
                                 </div>
                             </li> -->
                             <li  class="login"><a *ngIf="!roleBoolean" href="javascript:;" (click)="showLoginModal($event)">Sign in / Sign
-                                    up</a></li>
+                                    up</a>
+                                    <a *ngIf="roleBoolean" href="javascript:;" (click)="logout()">Sign out</a>
+                                </li>
                         </ul>
                     <!-- </li> -->
                 </ul>

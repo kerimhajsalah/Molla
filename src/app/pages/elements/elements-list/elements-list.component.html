@@ -1,16 +1,90 @@
-<main class="main0">
-    <molla-page-header title="Elements List" subtitle="Elements1"></molla-page-header>
+<main class="main">
+        <molla-page-header title="Commandes" subtitle=""></molla-page-header>
 
-    <nav class="breadcrumb-nav">
+  <div class="page-content">
+    <div class="cart">
         <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a routerLink="/">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a routerLink="/elements">Elements</a>
-                </li>
-            </ol>
+                <div class="row">
+              <div class="col-lg-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Client</th>
+                        <th>Tél</th>
+                        <th>Adresse</th>
+                        <th>Status</th>
+                        <th>Montat</th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let commande of listCommandes;" >
+                        <td class="price-col" (click)="openModal(commande.id)">
+                            <div >
+                                <a >
+                                    {{commande.id}}
+                                </a>
+                              
+
+                                <!-- <h3 class="product-title">
+                                    <a
+                                        >
+                                        c'est l'address de la commande
+                                    </a>
+                                </h3> -->
+                            </div>
+                        </td>
+                        <td class="product-col" (click)="openModal(commande.id)">
+                            <h3 class="product-title">
+                                {{commande.firstName+" "+commande.lastName}}
+                            </h3>
+                        </td>
+                        <td class="product-col" (click)="openModal(commande.id)">
+                            <h3 class="product-title">
+                                {{commande.Phone}}
+                            </h3>
+                        </td>
+                        <td class="product-col" (click)="openModal(commande.id)">
+                            <h3 class="product-title">
+                                {{commande.adresse}}
+                            </h3>
+                        </td>
+                        <td class="product-title" (click)="openModal(commande.id)">
+                            
+                            {{commande.status}}
+                        </td>
+                        <td class="total-col" (click)="openModal(commande.id)">{{commande.montant}}</td>
+                        <td class="row"><button class="btn-remove" (click)="refuse(commande.id)"><i
+                                    class="icon-close" ></i></button>
+                                    <button class="btn-remove" (click)="validate(commande.id)"><i
+                                        class="icon-check" ></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cart-bottom">
+                <!-- <div class="cart-discount">
+                    <form action="#">
+                        <div class="input-group">
+                            <input type="text" class="form-control" required placeholder="coupon code">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary-2" type="submit"><i
+                                        class="icon-long-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div> -->
+<!-- 
+                <a href="javascript:;" class="btn btn-outline-dark-2 btn-cart-update disabled"><span>UPDATE CART</span>
+                    <i class="icon-refresh"></i></a> -->
+            </div>
+            
         </div>
-    </nav>
+    </div>
+</div>
+</div>
+</div>
 </main>

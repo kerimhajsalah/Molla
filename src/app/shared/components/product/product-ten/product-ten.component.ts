@@ -9,6 +9,7 @@ import { WishlistService } from 'src/app/shared/services/wishlist.service';
 import { CompareService } from 'src/app/shared/services/compare.service';
 
 import { environment } from 'src/environments/environment';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
 	selector: 'molla-product-ten',
@@ -19,22 +20,24 @@ import { environment } from 'src/environments/environment';
 export class ProductTenComponent implements OnInit {
 
 	@Input() product: Product;
-
+	@Input() exist: Boolean;
+	@Input() pourcentage: number;
+	@Input() date : string;
 	maxPrice = 0;
 	minPrice = 99999;
-
+	role = false ;
 	SERVER_URL = environment.SERVER_URL;
-
 	constructor(
 		private router: Router,
 		private modalService: ModalService,
 		private cartService: CartService,
 		private wishlistService: WishlistService,
 		private compareService: CompareService,
-		
+		private apiService : ApiService
 	) { }
 
 	ngOnInit(): void {
+		this.role = localStorage.getItem('role') =="admin";
 		let min = this.minPrice;
 		let max = this.maxPrice;
 
@@ -56,7 +59,8 @@ export class ProductTenComponent implements OnInit {
 
 	addToCart(event: Event) {
 		event.preventDefault();
-		this.cartService.addToCart(this.product);
+		console.log("exist", this.exist , this.pourcentage)
+		this.cartService.addToCart(this.product , this.exist , this.pourcentage);
 	}
 
 	addToWishlist(event: Event) {

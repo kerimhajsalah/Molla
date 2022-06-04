@@ -13,7 +13,9 @@ import { LoginModalComponent } from '../components/modals/login-modal/login-moda
 import { VideoModalComponent } from '../components/modals/video-modal/video-modal.component';
 import { AddproductComponent } from '../components/modals/addproduct/addproduct.component';
 import { environment } from 'src/environments/environment';
-
+import { PromotionComponent } from '../components/modals/promotion/promotion.component';
+import { CommandeProductsComponent } from '../components/modals/commande-products/commande-products.component';
+import { FactureComponent } from '../components/modals/facture/facture.component';
 @Injectable({
 	providedIn: 'root'
 })
@@ -59,7 +61,44 @@ export class ModalService {
 			return true;
 		}
 	}
+	private modalOption5: NgbModalOptions = {
+	
+		centered: true,
+		size: 'lg',
+		windowClass: 'login-modal',
+		beforeDismiss: async () => {
+			document.querySelector('body')?.classList.remove('modal-open');
 
+			await new Promise((resolve) => {
+				setTimeout(() => {
+					resolve('success');
+				}, 300)
+			});
+
+			(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+
+			return true;
+		}
+	}
+	private modalOption6: NgbModalOptions = {
+	
+		centered: true,
+		size: 'lg',
+		windowClass: 'login-modal',
+		beforeDismiss: async () => {
+			document.querySelector('body')?.classList.remove('modal-open');
+
+			await new Promise((resolve) => {
+				setTimeout(() => {
+					resolve('success');
+				}, 300)
+			});
+
+			(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+
+			return true;
+		}
+	}
 	private modalOption3: NgbModalOptions = {
 		centered: true,
 		size: 'xl',
@@ -79,7 +118,24 @@ export class ModalService {
 			return true;
 		}
 	};
+	private modalOption7: NgbModalOptions = {
+		centered: true,
+		size: 'lg',
+		windowClass: 'newsletter-modal',
+		beforeDismiss: async () => {
+			document.querySelector('body')?.classList.remove('modal-open');
 
+			await new Promise((resolve) => {
+				setTimeout(() => {
+					resolve('success');
+				}, 250)
+			});
+
+			(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+
+			return true;
+		}
+	};
 	private modalOption4: NgbModalOptions = {
 		centered: true,
 		size: 'xl',
@@ -129,19 +185,51 @@ export class ModalService {
 			this.modalOption2
 		)
 	}
+	showModalFacture() {
+		(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+		this.modalService.open(
+			FactureComponent,
+			this.modalOption7
+		)
+	}
 	showLoginModalAddProduct(product? : any) {
+		console.log("hhhhh", product);
 		(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
 		const modalRef =	this.modalService.open(
 			AddproductComponent,
 			this.modalOption2,
+			
 		)
 		if(product){
-			modalRef.componentInstance.product =product
+			modalRef.componentInstance.product =product;
+			console.log('ddddddddd',product)
+		}else{
+			console.log('ddddddddddddddd',product)	
 		}
 		
 
 	}
+	showLoginModalPromotion() {
+	
+		(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+	this.modalService.open(
+			PromotionComponent,
+			this.modalOption5,
+			
+		)
 
+		
+
+	}
+	showCommandeProductsComponent(id){
+		(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+		const modalRef = this.modalService.open(
+			CommandeProductsComponent,
+				this.modalOption6,
+				
+			)
+		modalRef.componentInstance.commandeId =id;
+	}
 	// Show Video modal
 	showVideoModal() {
 		this.modalService.open(

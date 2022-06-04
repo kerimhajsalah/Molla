@@ -59,6 +59,24 @@ export class ApiService {
 	public createCommande(commande , products){
 		return this.http.post(`${environment.SERVER_URL}/commandes`, {commande,products});
 	}
+	public createPromotion (Pourcentage , startDate , endDate){
+		return this.http.post(`${environment.SERVER_URL}/promotion`, {Pourcentage,startDate,endDate});
+	}
+	public getPromotion(){
+		return this.http.get(`${environment.SERVER_URL}/promotion`);
+	}
+	public getCommandes(){
+		return this.http.get(`${environment.SERVER_URL}/commandes`);
+	}
+	public getProductsByCommande(id){
+		return this.http.get(`${environment.SERVER_URL}/commandes/${id}`);
+	}
+	public validateCommande(id){
+		return this.http.put(`${environment.SERVER_URL}/commandes/validate`,{id});
+	}
+	public refuseCommande(id){
+		return this.http.put(`${environment.SERVER_URL}/commandes/annuler`,{id});
+	}
 	/**
 	 * Get Products
 	 */

@@ -55,7 +55,7 @@
                             <td class="price-col">
                                <div class="product-price d-inline-block mb-0"
                                     *ngIf="true else elseBlock">
-                                    <span class="out-price">${{ product.price.toFixed(2) }}</span>
+                                    <span class="out-price"> {{ ( exist ? product.price - product.price * pourcentage/100 : product.price.toFixed( 2 ) ) }} TND</span>
                                 </div>
 
                                 <ng-template #elseBlock>

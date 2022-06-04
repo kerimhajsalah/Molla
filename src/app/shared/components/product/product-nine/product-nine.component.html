@@ -7,7 +7,7 @@
                 <span class="product-label label-top" *ngIf="product.top">Top</span>
                 <span class="product-label label-out" *ngIf="!product.stock || product.stock == 0">Out Of Stock</span> -->
 
-                <a [routerLink]="['/product/default/'+ product.slug]">
+                <a [routerLink]="['/product/default/'+ product.id]">
                     <molla-image [src]="product.picture" alt="Product"
                         width="1" height="1"
                         class="product-image" fixedPt="100%">

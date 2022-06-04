@@ -11,7 +11,7 @@ import { CartItem } from '../../shared/classes/cart-item';
  */
 export class AddToCartAction implements Action {
     readonly type = types.ADD_TO_CART;
-    constructor(public payload: { product: Product, qty: number }) { }
+    constructor(public payload: { product: Product, qty: number , exist? : boolean , pourcentage? : number}) { }
 }
 
 /**

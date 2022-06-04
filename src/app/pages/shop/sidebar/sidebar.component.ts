@@ -79,7 +79,10 @@ console.log("tyyyyy",this.type)
 		if (window.innerWidth > 991) this.toggle = false;
 		else this.toggle = true;
 	}
-
+	updateProducts($event){
+		console.log("event", $event);
+		this.products=[this.products[0]];
+	}
 	changeOrderBy(event: any) {
 		console.log('eeee',event)
 		this.router.navigate([], { queryParams: { orderBy: event.currentTarget.value, page: 1 }, queryParamsHandling: 'merge' });

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 
@@ -17,11 +18,24 @@ export class WishlistComponent implements OnInit, OnDestroy {
 	SERVER_URL = environment.SERVER_URL;
 
 	private subscr: Subscription;
-
-	constructor(public wishlistService: WishlistService) {
+	exist = false ;
+	pourcentage;
+	constructor(public wishlistService: WishlistService , private apiService : ApiService) {
 	}
 
 	ngOnInit(): void {
+		this.apiService.getPromotion().subscribe((res : any)=>{
+			const now = new Date();
+			if((new Date(res[0].startDate)).getTime()< now.getTime() && (new Date(res[0].endDate)).getTime()>now.getTime()){
+				this.exist = true ;
+				this.pourcentage= res[0].Pourcentage
+
+			}
+			else {
+			// this.exist = false;
+			}
+			
+		})
 		this.subscr = this.wishlistService.wishlistStream.subscribe(items => {
 			console.log(items)
 			this.wishItems = items.reduce((acc, product) => {
