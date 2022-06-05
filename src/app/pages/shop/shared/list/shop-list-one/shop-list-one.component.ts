@@ -56,6 +56,6 @@ export class ShopListOneComponent implements OnInit {
 	}
 	showPromotionModal(event: Event): void {
 		event.preventDefault();
-		this.modalService.showModalFacture();
+		this.modalService.showLoginModalPromotion();
 	}
 }

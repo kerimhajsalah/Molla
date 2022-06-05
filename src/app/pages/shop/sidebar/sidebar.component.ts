@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { matchSorter } from 'match-sorter';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
@@ -21,7 +21,8 @@ export class SidebarPageComponent implements OnInit {
 	searchTerm = '';
 	loaded = false;
 	firstLoad = false;
-
+	allProducts=[];
+	searchInput="";
 	constructor(public activeRoute: ActivatedRoute, public router: Router, public utilsService: UtilsService, public apiService: ApiService) {
 		this.activeRoute.params.subscribe(params => {
 			this.type = params['type'];
@@ -57,6 +58,7 @@ console.log("tyyyyy",this.type)
 				console.log("result",result)
 			
 				this.products = result;
+				this.allProducts = result;
 				this.totalCount = 5000;
 
 				this.loaded = true;
@@ -97,5 +99,22 @@ console.log("tyyyyy",this.type)
 
 	hideSidebar() {
 		document.querySelector('body').classList.remove('sidebar-filter-active');
+	}
+	search($event){
+		// console.log("hahahaah", this.searchInput);
+		if(this.searchInput !=""){
+			const found=  matchSorter(this.products, this.searchInput, {keys: ['name']})
+			console.log("eventttt",found)
+		
+			  if(found.length>0){
+				this.products= found;
+			  }
+			  else{
+				this.products=this.allProducts
+			  }
+		  }
+		  else{
+			this.products=this.allProducts
+		  }
 	}
 }

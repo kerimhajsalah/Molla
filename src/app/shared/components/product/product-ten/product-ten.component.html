@@ -15,7 +15,7 @@
         <div class="product-action-vertical">
             <a href="javascript:;" class="btn-product-icon btn-wishlist btn-expandable"
                 [class.added-to-wishlist]="isInWishlist()" (click)="addToWishlist($event)">
-                <span>{{ isInWishlist() ? 'go' : 'add' }} to Wishlist</span>
+                <span>{{ isInWishlist() ? 'go' : 'add' }} vers favories</span>
             </a>
         </div>
 
@@ -23,15 +23,15 @@
             <a 
             class="btn-product btn-cart btn-select"
                 *ngIf="false else cartBlock">
-                <span>select options</span>
+                <span>selectioner options</span>
             </a>
             <ng-template #cartBlock>
                 <button class="btn-product btn-cart" (click)="addToCart($event)">
-                    <span>add to cart</span>
+                    <span>ajouter au panier</span>
                 </button>
             </ng-template>
             <button class="btn-product btn-quickview" title="update"  *ngIf="role" (click)="openUpdateProduct($event)">
-                <span>update</span>
+                <span>modifier</span>
             </button>
             <!-- <button class="btn-product btn-quickview" title="Quick view" (click)="quickView($event)">
                 <span>quick view</span>
@@ -54,7 +54,7 @@
         </h3>
 
         <div class="product-price" *ngIf="!exist else elseBlock">
-            <span class="out-price" style="color: #a6c76c;">${{ product.price.toFixed(2) }}</span>
+            <span class="out-price" style="color: #a6c76c;">{{ product.price.toFixed(2) }} DT</span>
         </div>
         <div><span>{{product.description.slice(0,15)}}</span></div>
 
@@ -62,8 +62,8 @@
             <div class="product-price" *ngIf="!exist else elseBlock">${{ minPrice.toFixed(2) }}</div>
             <ng-template #elseBlock>
                 <div class="product-price" *ngIf="true else elseBlock">
-                    <span class="new-price">${{product.price - product.price *pourcentage/100 }}</span>
-                    <span class="old-price">${{product.price}}</span>
+                    <span class="new-price">{{product.price - product.price *pourcentage/100 }} DT</span>
+                    <span class="old-price">{{product.price}} DT</span>
                 </div>
                 <ng-template #elseBlock>
                     <!-- <div class="product-price">${{minPrice.toFixed(2)}}&ndash;${{maxPrice.toFixed(2)}}</div> -->

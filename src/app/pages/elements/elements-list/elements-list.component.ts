@@ -14,6 +14,9 @@ export class ElementsListPageComponent implements OnInit {
 
 	async ngOnInit() {
 	 this.listCommandes = await this.commadeService.getCommandes().toPromise();
+	this.listCommandes.sort(function(a, b) {
+		return a.id - b.id;
+	});
 	console.log("listCommandes", this.listCommandes);
 	}
 	

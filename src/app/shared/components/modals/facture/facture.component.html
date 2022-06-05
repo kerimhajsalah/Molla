@@ -2,19 +2,125 @@
     <button type="button" class="close" (click)="closeModal()">
         <span aria-hidden="true"><i class="icon-close"></i></span>
     </button>
- 
-    <div class="form-box">
-        <div class="form-tab nav-fill">
-            <ul   class="justify-content-center nav nav-pills">
-                <li >
-                    <a >Facture</a>
-                        <form action="#">
-                          <!-- <div> c'est une facture pour votre commande</div> -->
-                        </form>
+
+    <div class="form-box" >
+        <div class="form-tab " id="contentToConvert">
+            <!-- <ul   class="nav nav-pills" style="justify-content: space-around;">
+                <li  > -->
+                    <img  src="../../../../../assets/images/paraaa.jpg" style="width: 15%; margin-left: 40%;" >
+                    <div class="card" >
+                        <!-- <form action="#">
+                            <div class="form-group">
+                                <label for="singin-email">Pourcentage de promotion</label>
+                                <input type="number" min="1" max="100" class="form-control" id="singin-email"  name="singin-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="singin-password">date de début</label>
+                                <input type="date" class="form-control" id="singin-password"   name="singin-password"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="singin-password">date de fin</label>
+                                <input type="date" class="form-control" id="singin-password"   name="singin-password"
+                                    required>
+                            </div>
+
+                            <div class="form-footer">
+                                <button type="submit"  class="btn btn-outline-primary-2">
+                                    <span>Enrégistrer</span>
+                                    <i class="icon-long-arrow-right"></i>
+                                </button>
+                            </div>
+                        </form> -->
+                        <a style="font-weight: bold;align-items: center;">Bilan de Facture</a>
+                    <br>
+                    <br>
+
+                        <div class="row" style=" color: #212529;">
+                        <div class="col-sm-8">
+                            <div>
+                                Nom et Prénom : {{commande.firstName +" " + commande.lastName}}
+                            </div>
+                            <div>
+                                Adresse : {{commande.address}}
+                            </div>
+                            <div>
+                                Date : 25-06-2022
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div>
+                               Parapharmacie Siwar
+                            </div> 
+                            <div>
+                                la Sokra , Ariana 
+                             </div> 
+                             <div>
+                                (+216) 53008807 
+                             </div>
+                             <div>
+                                 Siwar.Para@gmail.com 
+                             </div>
+                        </div>
                 
-                </li>
-            </ul>
-            <div ></div>
+                    </div>
+                    <br>
+                    <br>
+                            <table  class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Produit
+                                        </th> 
+                                        <th>
+                                         quantité
+                                     </th>
+                                     <th>
+                                         prix
+                                     </th>
+                                     </tr>
+                                </thead>
+                                
+                                <tr *ngFor="let item of cartItems">
+                                    <td>
+                                        {{item.name}}
+                                    </td> 
+                                    <td>
+                                     {{item.qty}}
+                                 </td>
+                                 <td *ngIf="!exist">
+                                     {{item.price}}dt
+                                 </td>
+                                 <td *ngIf="exist">
+                                    {{item.price - item.price * Pourcentage / 100}}dt
+                                </td>
+                                 </tr>
+                            </table>
+                            <div style="font-weight: bold">
+                                Total : {{total}} dt
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+
+                                </div>
+                                <div class="col-sm-4">
+                                    <img src="../../../../../assets/images/Signature.PNG" alt="" >
+                                </div>
+                            </div>
+                        </div>
+                 
+                <!-- </li>
+            </ul> -->
+            <!-- <div [ngbNavOutlet]="nav"></div> -->
+            <div class="row">
+                <div class="col-sm-8">
+
+                </div>
+                <div class="col-sm-4">
+                    <a class="btn btn-outline-dark-2 btn-block mb-3" *ngIf="show"(click)="pdfConverter()"><span>télécharger</span><i class="ti-plus"></i></a>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

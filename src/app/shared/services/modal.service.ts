@@ -80,6 +80,24 @@ export class ModalService {
 			return true;
 		}
 	}
+	private modalOption8: NgbModalOptions = {
+		centered: true,
+		size: 'xl',
+		windowClass: 'login-modal',
+		beforeDismiss: async () => {
+			document.querySelector('body')?.classList.remove('modal-open');
+
+			await new Promise((resolve) => {
+				setTimeout(() => {
+					resolve('success');
+				}, 300)
+			});
+
+			(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+
+			return true;
+		}
+	}
 	private modalOption6: NgbModalOptions = {
 	
 		centered: true,
@@ -120,8 +138,8 @@ export class ModalService {
 	};
 	private modalOption7: NgbModalOptions = {
 		centered: true,
-		size: 'lg',
-		windowClass: 'newsletter-modal',
+		size: 'xl',
+		windowClass: 'vb-modal',
 		beforeDismiss: async () => {
 			document.querySelector('body')?.classList.remove('modal-open');
 
@@ -158,7 +176,7 @@ export class ModalService {
 	constructor(private modalService: NgbModal, private router: Router, private http: HttpClient) {
 	}
 
-	openNewsletter() {
+	openNewsletter(p ,d) {
 		if (this.timer) window.clearTimeout(this.timer);
 		if (!Cookie.get(`hideNewsletter-${environment.demo}`)) {
 			this.timer = window.setTimeout(() => {
@@ -167,10 +185,12 @@ export class ModalService {
 
 				setTimeout(() => {
 					if (this.router.url === '/' && !document.querySelector('.newsletter-modal')) {
-						this.modalService.open(
+						const modalRef =	this.modalService.open(
 							NewsletterModalComponent,
 							this.modalOption1
 						)
+						modalRef.componentInstance.Pourcentage=p;
+						modalRef.componentInstance.date=d;
 					}
 				}, 400);
 			}, 5000);
@@ -185,12 +205,16 @@ export class ModalService {
 			this.modalOption2
 		)
 	}
-	showModalFacture() {
+	showModalFacture(cartItems , commande , exist , p) {
 		(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
-		this.modalService.open(
+		const modalRef = this.modalService.open(
 			FactureComponent,
-			this.modalOption7
-		)
+			this.modalOption8
+		);
+		modalRef.componentInstance.cartItems = cartItems;
+		modalRef.componentInstance.commande = commande;
+		modalRef.componentInstance.exist = exist;
+		modalRef.componentInstance.Pourcentage = p
 	}
 	showLoginModalAddProduct(product? : any) {
 		console.log("hhhhh", product);

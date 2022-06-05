@@ -50,6 +50,9 @@ export class ApiService {
 
 		return this.http.get(`${environment.SERVER_URL}/products`);
 	}
+	public getCheckedProducts(){
+		return this.http.post(`${environment.SERVER_URL}/products/checked`, {});
+	}
 	public addProduct(product){
 		return this.http.post(`${environment.SERVER_URL}/products`, product);
 	}

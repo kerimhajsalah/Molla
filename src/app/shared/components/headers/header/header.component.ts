@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output , EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { UtilsService } from 'src/app/shared/services/utils.service';
@@ -13,7 +13,7 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 export class HeaderComponent implements OnInit {
 
 	@Input() containerClass = "container";
-
+	searchInput;
 	wishCount = 0;
     roleUser :String="";
 	roleBoolean:Boolean=false;
@@ -40,4 +40,5 @@ export class HeaderComponent implements OnInit {
 			location.reload();
 		}, 300);	
 	}
+
 }

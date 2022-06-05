@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit {
 			if((new Date(res[0].startDate)).getTime()< now.getTime() && (new Date(res[0].endDate)).getTime()>now.getTime()){
 				// this.exist = true ;
 				// this.pourcentage= res[0].Pourcentage
-				this.modalService.openNewsletter();
+				this.modalService.openNewsletter(res[0].Pourcentage,res[0].startDate.substring(0,10)+" - "+res[0].endDate.substring(0,10));
 
 			}
 			else {

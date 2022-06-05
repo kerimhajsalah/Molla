@@ -126,7 +126,10 @@ molla-quick-view, .container.quickView-container {
 	width: 990px;
 	margin: 0 auto;
 }
-
+.facture-modal .modal-dialog > .modal-content {
+	width: 100%;
+	margin: 0 auto;
+}
 .quickView-container,
 .fullscreen-container {
 	position: relative;

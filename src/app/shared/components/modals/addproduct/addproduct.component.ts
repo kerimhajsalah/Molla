@@ -42,7 +42,8 @@ export class AddproductComponent implements OnInit {
     qty : 0,
     picture:"",
     categorie:"",
-    SC:""
+    SC:"" ,
+    checked:false
 	}
   file ;
   SousCategories=[];

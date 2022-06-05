@@ -68,15 +68,13 @@ export class NosidebarPageComponent implements OnInit {
 			this.orderBy = 'default';
 		}
 		
-
-		this.apiService.fetchShopData( this.params, this.perPage ).subscribe( result => {
-			console.log("result", result);
+		this.apiService.getCheckedProducts().subscribe((result : any)=>{
 			this.products = result;
 			this.totalCount = result.length;
 			this.loaded = true;
-
 			this.utilsService.scrollToPageContent();
-		} )
+		})
+
 	}
 
 	changeOrderBy ( event: any ) {

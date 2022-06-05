@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import Cookie from 'js-cookie';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,8 @@ import { environment } from 'src/environments/environment';
 
 export class NewsletterModalComponent implements OnInit {
 
+	@Input() Pourcentage ;
+	@Input() date;
 	checkState = false;
 
 	constructor(private modalService: NgbActiveModal) { }

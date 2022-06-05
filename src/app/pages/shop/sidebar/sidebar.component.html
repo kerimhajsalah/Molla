@@ -66,7 +66,26 @@
                             </div>
                         </div>
                     </div> -->
-
+                    <div class="header-center">
+                        <div class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
+                            <a href="#" class="search-toggle" role="button">
+                                <i class="icon-search"></i>
+                            </a>
+                            <form action="#" method="get"  (submit)="search($event)">
+                                <div class="header-search-wrapper search-wrapper-wide">
+                                    <label for="q" class="sr-only">Chercher</label>
+                                    <input type="text" class="form-control" name="searchTerm" id="searchTerm" [(ngModel)]="searchInput" (ngModelChange)="search($event)" placeholder="Chercher produit..."
+                                        required />
+                                    <button class="btn btn-primary" type="submit">
+                                        <span class="sr-only">Chercher</span>
+                                        <i class="icon-search"></i>
+                                    </button>
+                                </div>
+                        
+                            </form>
+                        </div>
+                        <!-- <molla-header-search style="width: 100%;"></molla-header-search> -->
+                    </div>
                     <molla-shop-list-one [type]="type" [products]="products"  [loaded]="loaded">
                     </molla-shop-list-one>
 

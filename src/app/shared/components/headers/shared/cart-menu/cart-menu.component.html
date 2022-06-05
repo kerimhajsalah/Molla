@@ -5,12 +5,12 @@
             <i class="icon-shopping-cart"></i>
             <span class="cart-count">{{ cartService.qtyTotal | async }}</span>
         </div>
-        <p>Cart</p>
+        <p>Panier</p>
     </a>
 
     <div class="dropdown-menu dropdown-menu-right"
         [ngClass]="{'text-center': (cartService.cartStream | async).length == 0}">
-        <p *ngIf="(cartService.cartStream | async).length == 0 else elseBlock">No products in the cart.</p>
+        <p *ngIf="(cartService.cartStream | async).length == 0 else elseBlock">Aucun produit dans le panier</p>
 
         <ng-template #elseBlock>
             <div class="dropdown-cart-products">
@@ -22,7 +22,7 @@
 
                         <span class="cart-product-info">
                             <span class="cart-product-qty">{{ product.qty }}</span>
-                            x ${{ product.sale_price ? product.sale_price.toFixed(2): product.price.toFixed(2) }}
+                            x {{ product.sale_price ? product.sale_price.toFixed(2): product.price.toFixed(2) }} DT
                         </span>
                     </div>
 
@@ -44,7 +44,7 @@
             </div>
 
             <div class="dropdown-cart-action">
-                <a routerLink="/shop/cart" class="btn btn-primary">View Cart</a>
+                <a routerLink="/shop/cart" class="btn btn-primary">Afficher panier</a>
                 <!-- <a routerLink="/shop/checkout" class="btn btn-outline-primary-2"><span>Checkout</span><i
                         class="icon-long-arrow-right"></i></a> -->
             </div>

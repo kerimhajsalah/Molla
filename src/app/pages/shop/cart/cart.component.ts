@@ -6,6 +6,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
 	selector: 'shop-cart-page',
@@ -28,7 +29,7 @@ export class CartComponent implements OnInit, OnDestroy {
 	private subscr: Subscription;
 	exist = false;
 	pourcentage;
-	constructor(private store: Store<any>, public cartService: CartService , private apiService : ApiService) {
+	constructor(private store: Store<any>,public modalService: ModalService, public cartService: CartService , private apiService : ApiService) {
 	}
 
 	ngOnInit() {
@@ -73,10 +74,12 @@ export class CartComponent implements OnInit, OnDestroy {
 	changeShipping(value: number) {
 		this.shippingCost = value;
 	}
-	validateCommande(){
+	validateCommande(event: Event){
 
 		console.log("commande created", this.commande , this.cartItems);
-		this.apiService.createCommande(this.commande,this.cartItems).subscribe();
+		this.apiService.createCommande(this.commande,this.cartItems).subscribe((res=>{
+			this.showPromotionModal(event);
+		}));
 	}
 
 	onChangeQty(event: number, product: any) {
@@ -95,5 +98,9 @@ export class CartComponent implements OnInit, OnDestroy {
 			return acc;
 		}, [])
 		this.updateCart(event)
+	}
+	showPromotionModal(event: Event): void {
+		event.preventDefault();
+		this.modalService.showModalFacture(this.cartItems , this.commande , this.exist , this.pourcentage);
 	}
 }

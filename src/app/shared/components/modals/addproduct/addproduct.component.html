@@ -75,6 +75,10 @@
                                     </select>
                                 </div>                            
                             </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" [(ngModel)]="addProduct.checked" id="signin-remember">
+                                <label class="custom-control-label" for="signin-remember">Bon Plan</label>
+                            </div>
                             <div class="form-footer">
                                 <button  type="submit" class="btn btn-outline-primary-2">
                                     <span *ngIf="!update" (click)="login()">Add</span>
