@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { PromotionComponent } from '../components/modals/promotion/promotion.component';
 import { CommandeProductsComponent } from '../components/modals/commande-products/commande-products.component';
 import { FactureComponent } from '../components/modals/facture/facture.component';
+import { PicturesFormComponent } from '../components/modals/pictures-form/pictures-form.component';
 @Injectable({
 	providedIn: 'root'
 })
@@ -232,6 +233,14 @@ export class ModalService {
 		}
 		
 
+	}
+	showUpdatePicturesModal(){
+		(document.querySelector('.logo') as HTMLElement).focus({ preventScroll: true });
+		this.modalService.open(
+			PicturesFormComponent,
+				this.modalOption5,
+				
+			)
 	}
 	showLoginModalPromotion() {
 	

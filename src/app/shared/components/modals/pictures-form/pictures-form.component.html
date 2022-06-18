@@ -1,0 +1,59 @@
+<div class="modal-body">
+    <button type="button" class="close" (click)="closeModal()">
+        <span aria-hidden="true"><i class="icon-close"></i></span>
+    </button>
+
+    <div class="form-box"> 
+        <div class="form-tab nav-fill">
+            <ul ngbNav #nav="ngbNav" class="justify-content-center nav nav-pills">
+                <li ngbNavItem>
+                    <a ngbNavLink>Add Product</a>
+                    <ng-template ngbNavContent>
+                        <form   >
+                            <div class="form-group">
+                                <label for="size">Photo</label>
+                                <div class="select-custom">
+                                    <select name="sc" id="sc" class="form-control" [(ngModel)]="id"  >
+                                        <option value="" >Selectionner photo</option>
+                                        <option  [value]="1">1</option>
+                                        <option  [value]="2">2</option>
+                                        <option  [value]="3">3</option>
+
+                                    </select>
+                                </div>                            
+                            </div>
+                            <div class="form-group">
+                                <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+                         
+                         <div class="file-upload">
+                         <div class="row">
+                           uploaded 
+                         
+                            <button mat-mini-fab color="primary" class="upload-btn"
+                              (click)="fileUpload.click()">
+                              <i class="icon-arrow-up"></i>                          
+                              </button>
+                              <img [src]="picture" alt="Molla Logo" width="104" height="27">
+                         </div>
+                       
+                               
+                         </div>
+                            </div>
+                          
+                            <div class="form-footer">
+                                <button  type="submit" class="btn btn-outline-primary-2">
+                                    <span (click)="submitModal()">Add</span>
+                                    <i class="icon-long-arrow-right"></i>
+                                </button>
+                              
+                             
+                            </div>
+                        </form>
+                    </ng-template>
+                </li>
+                
+            </ul>
+            <div [ngbNavOutlet]="nav"></div>
+        </div>
+    </div>
+</div>

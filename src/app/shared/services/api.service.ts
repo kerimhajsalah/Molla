@@ -50,6 +50,12 @@ export class ApiService {
 
 		return this.http.get(`${environment.SERVER_URL}/products`);
 	}
+	public getPictures(){
+		return this.http.get(`${environment.SERVER_URL}/homepic`);
+	}
+	public createPic(id , url){
+		return this.http.post(`${environment.SERVER_URL}/homepic`, {id,url});
+	}
 	public getCheckedProducts(){
 		return this.http.post(`${environment.SERVER_URL}/products/checked`, {});
 	}

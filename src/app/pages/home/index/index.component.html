@@ -1,8 +1,9 @@
 <main class="main home-page skeleton-body">
     <div class="intro-slider-container">
+
         <owl-carousel carouselClasses="owl-simple owl-light owl-nav-inside slider-container-1" [options]="introSlider">
             <div class="intro-slide intro-slide1"
-                style="background-image: url(assets/images/home/slides/slide-1.jpg); background-color: #edf1f0;">
+                style="background-image: url(assets/images/home/slides/slide-2.jpg); background-color: #edf1f0;">
                 <div class="container intro-content" contentAnim aniName="fadeInUpShorter">
                     <!-- <h3 class="intro-subtitle">Deals and Promotions</h3> -->
                     <h1 class="intro-title text-secondary-dark font-weight-normal">Wooden<br>Sideboard Table<br><span
@@ -12,6 +13,10 @@
                         <span>Afficher le Bon Plan</span>
                         <i class="icon-long-arrow-right"></i>
                     </a> 
+                    <a (click)="openModal()" class="btn btn-outline-dark" style="margin-left: 10px;">
+                        <span>Photos</span>
+                        <i class="icon-cog"></i>
+                    </a>
                 </div>
             </div>
 

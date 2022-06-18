@@ -75,6 +75,7 @@ import { PostFourComponent } from './components/blog-post/post-four/post-four.co
 import { PromotionComponent } from './components/modals/promotion/promotion.component';
 import { CommandeProductsComponent } from './components/modals/commande-products/commande-products.component';
 import { FactureComponent } from './components/modals/facture/facture.component';
+import { PicturesFormComponent } from './components/modals/pictures-form/pictures-form.component';
 
 @NgModule({
 	declarations: [
@@ -142,7 +143,8 @@ import { FactureComponent } from './components/modals/facture/facture.component'
 		CountToComponent,
   PromotionComponent,
   CommandeProductsComponent,
-  FactureComponent
+  FactureComponent,
+  PicturesFormComponent
 	],
 
 	imports: [

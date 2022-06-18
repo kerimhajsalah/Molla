@@ -19,7 +19,7 @@ export class IndexComponent implements OnInit {
 	loaded = false;
 	introSlider = introSlider;
 	brandSlider = brandSlider;
-
+	pictures;
 	constructor(public apiService: ApiService, public utilsService: UtilsService, private modalService: ModalService,) {
 		this.apiService.getPromotion().subscribe((res : any)=>{
 			const now = new Date();
@@ -45,5 +45,14 @@ export class IndexComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.apiService.getPictures().subscribe(res=>{
+			console.log("pictures", res)
+			this.pictures = res
+		})
 	}
+	openModal(){
+		this.modalService.showUpdatePicturesModal();
+	}
+
+	
 }
