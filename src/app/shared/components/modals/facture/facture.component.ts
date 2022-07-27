@@ -17,8 +17,8 @@ export class FactureComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("cartItem", this.exist);
-    console.log("commande", this.Pourcentage);
+/*     console.log("cartItem", this.exist);
+    console.log("commande", this.Pourcentage); */
     for (let i of this.cartItems){
       this.total += i.price * i.qty
     }

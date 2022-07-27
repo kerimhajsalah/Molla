@@ -12,16 +12,17 @@ export class LoginModalComponent implements OnInit {
 
 	constructor(private _auth: ConfigServiceService, private _authUser:ApiService , private router : Router) { }
     registerUser = {
-		firstname:"",
-		lastname:"",
+		firstName:"",
+		lastName:"",
 		age:0,
 		titre:"",
-		address:"",
+		adresse:"",
 		city:"",
 		country:"",
-		codepostal:0,
+		codePostal:0,
 		email:"",
 		password:"",
+		status:"OK"
 	}
 	loginUsuer = {
 		email:"",
