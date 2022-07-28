@@ -22,7 +22,7 @@ export class LoginModalComponent implements OnInit {
 		codePostal:0,
 		email:"",
 		password:"",
-		status:"OK"
+		status:"admin"
 	}
 	loginUsuer = {
 		email:"",

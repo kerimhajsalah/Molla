@@ -12,6 +12,7 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 
 export class SidebarPageComponent implements OnInit {
 	products = [];
+	products2 = [];
 	perPage = 12;
 	type = 'list';
 	totalCount = 0;
@@ -82,8 +83,14 @@ console.log("tyyyyy",this.type)
 		else this.toggle = true;
 	}
 	updateProducts($event){
-		console.log("event", $event);
-		this.products=[this.products[0]];
+		console.log("eventhhhhhhhhhhh", $event)
+		/*  =[this.products[1]]; */
+		this.products.map((res)=>{
+			if(res.categorie==$event||res.SC==$event){
+				this.products2.push(res)
+	}
+		})
+		this.products=this.products2
 	}
 	changeOrderBy(event: any) {
 		console.log('eeee',event)

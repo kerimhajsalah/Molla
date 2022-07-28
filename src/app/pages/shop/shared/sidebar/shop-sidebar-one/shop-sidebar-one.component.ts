@@ -15,22 +15,51 @@ export class ShopSidebarOneComponent implements OnInit {
 	shopData = shopData;
 	params = {};
 	priceRange: any = [0, 100];
-	visageSC = ["Soins hydratants et nourrissants","Soins anti-âge et anti-rides","Maquillage","Yeux et lèvres",
-    "Démaquillants, nettoyants visage","Soins peau grasse, mixte et acné"];
-	cheveuxSC = ["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-	"Produits coiffants" ,"Compléments cheveux et ongles"];
-	corpsSC = ["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
-	"Parfum"];
-	bbmmSC = ["Puériculture","Toilette & soins bébé","Change de bébé"];
-	compAlimSC=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
-	"Parfum"];
-	HygSC = ["Puériculture","Toilette & soins bébé","Change de bébé"];
-	SolaireSC = ["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-	"Produits coiffants" ,"Compléments cheveux et ongles"];
-	bioNatSC = ["Puériculture","Toilette & soins bébé","Change de bébé"];
-	MatMediSC = ["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-	"Produits coiffants" ,"Compléments cheveux et ongles"];
-	HommeSC = ["Puériculture","Toilette & soins bébé","Change de bébé"];
+	visageSC = ["Lait","Lotion","Gel lavant","Eau micellaire","Eaux thermalese","Mousse nettoyant","Masque visage","Gommage visage"];
+	cheveuxSC = ["Masque visage hydratant",
+	"Hydratant peaux sèches",
+	"Hydratant peaux normale a mixte",
+	"Hydratant peaux grasse",
+   "Hydratant peaux intolérant",
+	"Hydratant peaux atopiques"];
+	corpsSC = ["Soin anti rides",
+	"Premières rides",
+	"Rides installées",
+	"Rides marquées, perte de fermeté",
+	"Soins anti rides peau sèche",
+	"Soin anti rides peau grasse",
+	"Soin liftant"];
+	bbmmSC = ["Nettoyage et purifiant",
+	"Lotion",
+   "Crèmes et soin traitant",
+	 "Traitant matin et soir",
+	 "Soins specifique",
+	  "Soin teinte",
+	 "Soin a imperfections"];
+	compAlimSC=["Nettoyant pour peau sensible",
+	"Masques apaisants",
+	"Lotion apaisante",
+	"Crèmes peau sensibles, anti rougeurs"];
+	HygSC = ["Eclat du teint",
+	"BB crème",
+	"CC crème",
+	"Eclat du teint et anti fatigue"];
+	SolaireSC = ["Soin anti poches et cernes",
+	"Contour des yeux",
+	"Démaquillant yeux",
+	"Anti âge yeux"];
+	bioNatSC = ["Hydratation et réparation lèvres",
+	"Stick solaire"];
+	MatMediSC = ["Hydratation et fermete corps",
+	"Vergeture",
+	"Massage et bien etre",
+	"Soins des pieds",
+	"Soins des mains Soins des ongles"];
+	HommeSC = ["Le bain",
+	"Le change",
+	"La toilette",
+	"Le bienêtre",
+	"Soins troubles cutanées"];
 	@Output() newCategorieEvent = new EventEmitter();
 	@ViewChild('priceSlider') priceSlider: any;
 	constructor(public activeRoute: ActivatedRoute, public router: Router ) {
@@ -59,7 +88,7 @@ export class ShopSidebarOneComponent implements OnInit {
 		return currentQueries && currentQueries.includes(value);
 	}
 	filterBySC(item){
-		console.log("eventEmetted");
+		console.log("eventEmetted",item);
 		this.newCategorieEvent.emit(item);
 	}
 	getUrlForAttrs(type: string, value: string) {

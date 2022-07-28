@@ -35,7 +35,7 @@ export class ShopListOneComponent implements OnInit {
 	ngOnInit(): void {
 		this.apiService.getPromotion().subscribe((res : any)=>{
 			const now = new Date();
-			console.log("reeeeeeeeeeeees",res)
+		
 			if((new Date(res[0].startDate)).getTime()< now.getTime() && (new Date(res[0].endDate)).getTime()>now.getTime()){
 				this.exist = true ;
 				this.pourcentage= res[0].Pourcentage
@@ -48,11 +48,14 @@ export class ShopListOneComponent implements OnInit {
 			
 		})
 		this.role = localStorage.getItem('role');
+		console.log("reeeeeeeeeeeees",this.role)
+		console.log("tloadedype",this.loaded)
 	}
 
 	showAddProductModal(event: Event): void {
 		event.preventDefault();
 		this.modalService.showLoginModalAddProduct();
+		
 	}
 	showPromotionModal(event: Event): void {
 		event.preventDefault();

@@ -84,39 +84,144 @@ selectCategory(event){
  var res = $(event.target).val();
  this.addProduct.categorie=res;
 switch (res) {
-  case 'Visage':
-    this.SousCategories=["Soins hydratants et nourrissants","Soins anti-âge et anti-rides","Maquillage","Yeux et lèvres",
-    "Démaquillants, nettoyants visage","Soins peau grasse, mixte et acné"]
+  case 'Nettoyant et démaquillant':
+    this.SousCategories=["Lait","Lotion","Gel lavant","Eau micellaire","Eaux thermalese","Mousse nettoyant","Masque visage","Gommage visage"]
     break;
   case 'Cheveux':
-      this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-      "Produits coiffants" ,"Compléments cheveux et ongles"]
+      this.SousCategories=["Masque visage hydratant",
+        "Hydratant peaux sèches",
+        "Hydratant peaux normale a mixte",
+        "Hydratant peaux grasse",
+       "Hydratant peaux intolérant",
+        "Hydratant peaux atopiques"]
       break;
-  case 'Corps':
-    this.SousCategories=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
-      "Parfum"]
+  case 'Soin anti âge et anti rides':
+    this.SousCategories=["Soin anti rides",
+      "Premières rides",
+      "Rides installées",
+      "Rides marquées, perte de fermeté",
+      "Soins anti rides peau sèche",
+      "Soin anti rides peau grasse",
+      "Soin liftant"]
     break;
-  case 'Bébé et maman':
-    this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+  case 'Soin peau grasse, mixte et acnéiques et imperfection':
+    this.SousCategories=["Nettoyage et purifiant",
+     "Lotion",
+    "Crèmes et soin traitant",
+      "Traitant matin et soir",
+      "Soins specifique",
+       "Soin teinte",
+      "Soin a imperfections"]
     break;
-  case 'Compléments alimentaire':
-    this.SousCategories=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
-        "Parfum"]
+  case 'Soin anti rougeurs et peau sensibles':
+    this.SousCategories=["Nettoyant pour peau sensible",
+      "Masques apaisants",
+      "Lotion apaisante",
+      "Crèmes peau sensibles, anti rougeurs"]
     break;
-  case 'Hygiene':
-    this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+  case 'Soin Anti taches dépigmentant':
+    this.SousCategories=["Eclat du teint",
+      "BB crème",
+      "CC crème",
+      "Eclat du teint et anti fatigue"]
     break;
-  case 'Solaire':
-      this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-      "Produits coiffants" ,"Compléments cheveux et ongles"]
+  case 'Soin des yeux':
+      this.SousCategories=["Soin anti poches et cernes",
+        "Contour des yeux",
+        "Démaquillant yeux",
+        "Anti âge yeux"]
       break;
-  case 'Bio et naturel':
-        this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+  case 'Soin des lèvres':
+        this.SousCategories=["Hydratation et réparation lèvres",
+          "Stick solaire"]
         break;
-  case 'Matériel Medical':
-          this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-          "Produits coiffants" ,"Compléments cheveux et ongles"]
+  case 'Corps':
+          this.SousCategories=["Hydratation et fermete corps",
+            "Vergeture",
+            "Massage et bien etre",
+            "Soins des pieds",
+            "Soins des mains Soins des ongles"]
           break;
+          case 'Soin des bébés':
+            this.SousCategories=["Le bain",
+              "Le change",
+              "La toilette",
+              "Le bienêtre",
+              "Soins troubles cutanées"]
+            break;
+
+
+
+            case 'Futures et jeunes mamans':
+              this.SousCategories=["Test de grossesse",
+                "Soins anti vergeture",
+                "Complément alimentaire",
+                "Allaitement",
+                "Soin post accouchement"]
+              break;
+              case 'Puériculture':
+                this.SousCategories=["Sucettes",
+                  "Biberon",
+                  "Tétines",
+                  "Accessoires"]
+                break;
+                case 'Hygiène intime':
+                  this.SousCategories=["Changes complets",
+                    "Toilettes et soins",
+                    "Protections périodiques",
+                    "Tampon"]
+                  break;
+                  case 'Sexualité':
+                    this.SousCategories=["Préservatif",
+                      "Lubrifiant"]
+                    break;
+
+
+
+                    case 'Minceur':
+                      this.SousCategories=["Accessoires minceur",
+                        "Anti cellulite",
+                        "Anti-vergetures",
+                        "Bruleur de graisse",
+                        "Capteur de graisse",
+                        "Coup faim",
+                        "Draineur et détox",
+                        "Minceur bio",
+                        "Régimes hyper protéiniques",
+                        "Silhouette et ventre plat"]
+                      break;
+                      case 'Shampoing':
+                        this.SousCategories=["Shampoing doux et fréquent",
+                         "Shampoing antipelliculaire",
+                          "Shampoing cheveux gras",
+                          "Shampoing cheveux secs",
+                          "Shampoing cheveux colorés",
+                          "Shampoing cheveux fins, cassants",
+                          "Shampoing anti-poux",
+                          "Shampoing sec"]
+                        break;
+                        case 'Apres shampoing, soin des cheveux':
+                          this.SousCategories=["Apres shampoing",
+                            "Masques, brumes",
+                            "Soin défrisant et lissant",
+                            "Soins capillaires",
+                            "Capillaire solaire",
+                           "Produits coiffants",
+                            "Protéine capillaire",
+                            "Lotion anti-poux"]
+                          break;
+                          case 'Bio et naturel':
+                          this.SousCategories=["Cosmétique Bio et Naturel",
+                            "Cheveux Bio et Naturels",
+                           "Minceur Bio et Naturelle",
+                            "Hygiène Bio et Naturelle",
+                            "Solaire Bio et Naturel",
+                            "Maman &amp; Bébé Bio et Naturel",
+                            "Aromathérapie, Bien-être et Santé",
+                           "Alimentation Bio et Naturelle",
+                            "Homme Bio et Naturel"]
+                          break;
+          
   default:
     this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
     break;
@@ -124,44 +229,149 @@ switch (res) {
 
 }
 selectCategoryOnInit(value){
- switch (value) {
-   case 'Visage':
-     this.SousCategories=["Soins hydratants et nourrissants","Soins anti-âge et anti-rides","Maquillage","Yeux et lèvres",
-     "Démaquillants, nettoyants visage","Soins peau grasse, mixte et acné"]
-     break;
-   case 'Cheveux':
-       this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-       "Produits coiffants" ,"Compléments cheveux et ongles"]
-       break;
-   case 'Corps':
-     this.SousCategories=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
-       "Parfum"]
-     break;
-   case 'Bébé et maman':
-     this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
-     break;
-   case 'Compléments alimentaire':
-     this.SousCategories=["Hydratation et nutrition corps","Epilation, dépilation, décoloration","Soins spécifiques","Soins des pieds",
-         "Parfum"]
-     break;
-   case 'Hygiene':
-     this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
-     break;
-   case 'Solaire':
-       this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-       "Produits coiffants" ,"Compléments cheveux et ongles"]
-       break;
-   case 'Bio et naturel':
-         this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
-         break;
-   case 'Matériel Medical':
-           this.SousCategories=["Shampoing","Après-shampooing, soin des cheveux","Soins anti-chute","Kératine",
-           "Produits coiffants" ,"Compléments cheveux et ongles"]
-           break;
-   default:
-     this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
-     break;
- }
+  switch (value) {
+    case 'Nettoyant et démaquillant':
+      this.SousCategories=["Lait","Lotion","Gel lavant","Eau micellaire","Eaux thermalese","Mousse nettoyant","Masque visage","Gommage visage"]
+      break;
+    case 'Cheveux':
+        this.SousCategories=["Masque visage hydratant",
+          "Hydratant peaux sèches",
+          "Hydratant peaux normale a mixte",
+          "Hydratant peaux grasse",
+         "Hydratant peaux intolérant",
+          "Hydratant peaux atopiques"]
+        break;
+    case 'Soin anti âge et anti rides':
+      this.SousCategories=["Soin anti rides",
+        "Premières rides",
+        "Rides installées",
+        "Rides marquées, perte de fermeté",
+        "Soins anti rides peau sèche",
+        "Soin anti rides peau grasse",
+        "Soin liftant"]
+      break;
+    case 'Soin peau grasse, mixte et acnéiques et imperfection':
+      this.SousCategories=["Nettoyage et purifiant",
+       "Lotion",
+      "Crèmes et soin traitant",
+        "Traitant matin et soir",
+        "Soins specifique",
+         "Soin teinte",
+        "Soin a imperfections"]
+      break;
+    case 'Soin anti rougeurs et peau sensibles':
+      this.SousCategories=["Nettoyant pour peau sensible",
+        "Masques apaisants",
+        "Lotion apaisante",
+        "Crèmes peau sensibles, anti rougeurs"]
+      break;
+    case 'Soin Anti taches dépigmentant':
+      this.SousCategories=["Eclat du teint",
+        "BB crème",
+        "CC crème",
+        "Eclat du teint et anti fatigue"]
+      break;
+    case 'Soin des yeux':
+        this.SousCategories=["Soin anti poches et cernes",
+          "Contour des yeux",
+          "Démaquillant yeux",
+          "Anti âge yeux"]
+        break;
+    case 'Soin des lèvres':
+          this.SousCategories=["Hydratation et réparation lèvres",
+            "Stick solaire"]
+          break;
+    case 'Corps':
+            this.SousCategories=["Hydratation et fermete corps",
+              "Vergeture",
+              "Massage et bien etre",
+              "Soins des pieds",
+              "Soins des mains Soins des ongles"]
+            break;
+            case 'Soin des bébés':
+              this.SousCategories=["Le bain",
+                "Le change",
+                "La toilette",
+                "Le bienêtre",
+                "Soins troubles cutanées"]
+              break;
+  
+  
+  
+              case 'Futures et jeunes mamans':
+                this.SousCategories=["Test de grossesse",
+                  "Soins anti vergeture",
+                  "Complément alimentaire",
+                  "Allaitement",
+                  "Soin post accouchement"]
+                break;
+                case 'Puériculture':
+                  this.SousCategories=["Sucettes",
+                    "Biberon",
+                    "Tétines",
+                    "Accessoires"]
+                  break;
+                  case 'Hygiène intime':
+                    this.SousCategories=["Changes complets",
+                      "Toilettes et soins",
+                      "Protections périodiques",
+                      "Tampon"]
+                    break;
+                    case 'Sexualité':
+                      this.SousCategories=["Préservatif",
+                        "Lubrifiant"]
+                      break;
+  
+  
+  
+                      case 'Minceur':
+                        this.SousCategories=["Accessoires minceur",
+                          "Anti cellulite",
+                          "Anti-vergetures",
+                          "Bruleur de graisse",
+                          "Capteur de graisse",
+                          "Coup faim",
+                          "Draineur et détox",
+                          "Minceur bio",
+                          "Régimes hyper protéiniques",
+                          "Silhouette et ventre plat"]
+                        break;
+                        case 'Shampoing':
+                          this.SousCategories=["Shampoing doux et fréquent",
+                           "Shampoing antipelliculaire",
+                            "Shampoing cheveux gras",
+                            "Shampoing cheveux secs",
+                            "Shampoing cheveux colorés",
+                            "Shampoing cheveux fins, cassants",
+                            "Shampoing anti-poux",
+                            "Shampoing sec"]
+                          break;
+                          case 'Apres shampoing, soin des cheveux':
+                            this.SousCategories=["Apres shampoing",
+                              "Masques, brumes",
+                              "Soin défrisant et lissant",
+                              "Soins capillaires",
+                              "Capillaire solaire",
+                             "Produits coiffants",
+                              "Protéine capillaire",
+                              "Lotion anti-poux"]
+                            break;
+                            case 'Bio et naturel':
+                            this.SousCategories=["Cosmétique Bio et Naturel",
+                              "Cheveux Bio et Naturels",
+                             "Minceur Bio et Naturelle",
+                              "Hygiène Bio et Naturelle",
+                              "Solaire Bio et Naturel",
+                              "Maman &amp; Bébé Bio et Naturel",
+                              "Aromathérapie, Bien-être et Santé",
+                             "Alimentation Bio et Naturelle",
+                              "Homme Bio et Naturel"]
+                            break;
+            
+    default:
+      this.SousCategories=["Puériculture","Toilette & soins bébé","Change de bébé"]
+      break;
+  }
  
  }
 selectSC(event){
@@ -221,6 +431,7 @@ removeUploadedFile() {
     console.log("eee111",)
     this.addProduct=this.product;
 		let modal = document.querySelector('.login-modal') as HTMLElement;
+    location.reload()
     console.log("eee111",modal)
 		if (modal)
 			modal.click();
@@ -236,8 +447,10 @@ removeUploadedFile() {
       this.client.uploadFile(this.file).then((res)=>{
         this.addProduct.picture= res.cdnUrl;
         console.log("this is the upload result", res);
-        console.log("addProduct", this.addProduct);
-        this._authUser.addProduct(this.addProduct).subscribe();
+        console.log("addProduct111111111", this.addProduct);
+        this._authUser.addProduct(this.addProduct).subscribe((res)=>{
+          console.log("fgsdhgghshgsgdh",res)
+        });
         this.closeModal()
   
       })
@@ -245,7 +458,7 @@ removeUploadedFile() {
     else {
       // this.client.uploadFile(this.file).then((res)=>{
         // this.addProduct.picture= res.cdnUrl;
-        console.log("addProduct", this.addProduct);
+        console.log("addProduct2222", this.addProduct);
         this._authUser.updateProduct(this.addProduct,this.product.id).subscribe();
         this.closeModal()
   

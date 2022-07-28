@@ -69,6 +69,7 @@ export class NosidebarPageComponent implements OnInit {
 		}
 		
 		this.apiService.getCheckedProducts().subscribe((result : any)=>{
+			console.log(result)
 			this.products = result;
 			this.totalCount = result.length;
 			this.loaded = true;

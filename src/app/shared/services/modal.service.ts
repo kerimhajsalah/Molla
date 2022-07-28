@@ -228,6 +228,7 @@ export class ModalService {
 		if(product){
 			modalRef.componentInstance.product =product;
 			console.log('ddddddddd',product)
+		
 		}else{
 			console.log('ddddddddddddddd',product)	
 		}
